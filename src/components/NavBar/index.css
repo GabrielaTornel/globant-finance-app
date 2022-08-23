@@ -2,6 +2,12 @@
   background-color: #605DEC;
   width: 100%;
   color: azure;
-  display: flex;
   justify-content: end;
+  display: flex;
+  
+}
+
+.nav-nav{
+  justify-content: end;
+
 }
