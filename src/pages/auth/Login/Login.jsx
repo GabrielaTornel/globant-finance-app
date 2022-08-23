@@ -1,13 +1,12 @@
-import { Button } from "rsuite";
 import "rsuite/styles/index.less";
 import { Link } from "react-router-dom";
-import { Form, Schema } from "rsuite";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { loginWithGoogle } from "../../../firebaseConfig/init.js";
-import GooglePlusCircleIcon from "@rsuite/icons/legacy/GooglePlusCircle";
 import { loginWithEmailAndPassword } from "../../../firebaseConfig/init";
 import Swal from "sweetalert2";
+import Button from "react-bootstrap/Button";
+import Form from "react-bootstrap/Form";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -22,10 +21,10 @@ const Login = () => {
     }
   };
 
-  //Validación de formulario 
+  //Validación de formulario
 
-  const handleSubmit = async () => {
-
+  const handleSubmit = async (event) => {
+    event.preventDefault();
     const validEmail = /[\w\d\.-]+@[\w\d\.-]+\.[\w\d\.-]+/g;
     if (!validEmail.test(email)) {
       Swal.fire({
@@ -91,8 +90,6 @@ const Login = () => {
     }
   };
 
- 
-
   const signInWithGoogle = () => {
     loginWithGoogle()
       .then((res) => {
@@ -107,43 +104,49 @@ const Login = () => {
         navigate("/");
       });
   };
+
   return (
-    <div className="App">
-      <h3>Inicia sesión</h3>
-      <Form  onSubmit={handleSubmit}>
-        <input
-          name="email"
-          type="email"
-          placeholder="Correo electrónico"
-          onChange={handleChange}
-        ></input>
-        <input
-          name="password"
-          label="Password"
-          type="password"
-          autoComplete="off"
-          placeholder="Contraseña"
-          onChange={handleChange}
-        ></input>
+    <>
+      <Form onSubmit={handleSubmit}>
+        <Form.Group className="mb-3" controlId="formBasicEmail">
+          <Form.Label>Email address</Form.Label>
+          <Form.Control
+            name="email"
+            type="email"
+            placeholder="Correo electrónico"
+            onChange={handleChange}
+          />
+          <Form.Text className="text-muted">
+            We'll never share your email with anyone else.
+          </Form.Text>
+        </Form.Group>
 
-        <Button appearance="primary" color="violet" type="submit">
-          Iniciar sesión
+        <Form.Group className="mb-3" controlId="formBasicPassword">
+          <Form.Label>Password</Form.Label>
+          <Form.Control
+            name="password"
+            label="Password"
+            type="password"
+            autoComplete="off"
+            placeholder="Contraseña"
+            onChange={handleChange}
+          />
+        </Form.Group>
+        <Form.Group className="mb-3" controlId="formBasicCheckbox">
+          <Form.Check type="checkbox" label="Check me out" />
+        </Form.Group>
+        <Button variant="primary" type="submit">
+          Iniciar Sesion
         </Button>
-        <Button
-          color="red"
-          appearance="primary"
-          type="submit"
-          onClick={signInWithGoogle}
-        >
-          <GooglePlusCircleIcon /> Google
+        <Button variant="primary" type="submit" onClick={signInWithGoogle}>
+          Google
         </Button>
-
         <Link to="/register" className="Link-register">
-          ¿ No tienes cuenta? Regístrate
+          ¿No tienes cuenta? Regístrate
         </Link>
       </Form>
-    </div>
+    </>
   );
-}
+};
 
 export default Login;
