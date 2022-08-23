@@ -2,6 +2,9 @@ import React from "react";
 import { List } from "rsuite";
 import "./index.css";
 import IOsIcon from "@rsuite/icons/IOs";
+import {ModalDashboard} from "../Modal/index"
+import { ButtonToolbar, IconButton } from "rsuite";
+import StarIcon from "@rsuite/icons/legacy/Star";
 
 
 export const ListItems = () => {
@@ -55,10 +58,15 @@ export const ListItems = () => {
     <div className="list-container">
       {itemsList.map((item, i) => (
         <List key={i}>
-          <List.Item> {item.image} {item.category} {item.price} </List.Item>
+          <List.Item>
+            {" "}
+            {item.image} {item.category} {item.price}{" "}
+          </List.Item>
         </List>
       ))}
-     
+      <section>
+        <ModalDashboard />
+      </section>
     </div>
   );
 };
