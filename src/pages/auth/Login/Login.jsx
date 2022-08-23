@@ -5,7 +5,7 @@ import { Form, Schema } from "rsuite";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { loginWithGoogle } from "../../../firebaseConfig/init.js";
-import GooglePlusCircleIcon from '@rsuite/icons/legacy/GooglePlusCircle';
+import GooglePlusCircleIcon from "@rsuite/icons/legacy/GooglePlusCircle";
 
 function Login() {
   const model = Schema.Model({
@@ -38,14 +38,14 @@ function Login() {
       });
   };
   return (
-    <div className="App">
+    <div className="Conatainer-login">
       <h3>Inicia sesión</h3>
       <Form model={model} /*  onSubmit={handleSubmit} */>
         <TextField
           name="email"
           type="email"
           placeholder="Correo electrónico"
-          onChange={(e) => setEmail(e.target.value)}
+          // onChange={(e) => setEmail(e.target.value)}
         />
         <TextField
           name="password"
@@ -55,18 +55,23 @@ function Login() {
           placeholder="Contraseña"
         />
 
-        <Button appearance="primary" color="violet"  type="submit">
+        <Button appearance="primary" color="violet" type="submit">
           Iniciar sesión
         </Button>
-        <Button color="red" appearance="primary" type="submit" onClick={signInWithGoogle}>
-      <GooglePlusCircleIcon /> Google
-    </Button>
-        
+        <Button
+          color="red"
+          appearance="primary"
+          type="submit"
+          onClick={signInWithGoogle}
+        >
+          <GooglePlusCircleIcon /> Google
+        </Button>
+        <br></br>
+
         <Link to="/register" className="Link-register">
           ¿ No tienes cuenta? Regístrate
         </Link>
       </Form>
-     
     </div>
   );
 }
