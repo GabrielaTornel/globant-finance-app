@@ -1,25 +1,21 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import './App.css'
-import { Button } from 'rsuite';
-import 'rsuite/styles/index.less'
+import React from "react";
+import "rsuite/styles/index.less";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Login from "./pages/auth/Login/Login";
+import Register from "./pages/auth/Register/Register";
+import Dashboard from "./pages/Dashboard/Dashboard";
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <div className="App">
-      <Button appearance="default">Default</Button>
-    <Button appearance="primary">Primary</Button>
-    <Button appearance="link">Link</Button>
-    <Button appearance="subtle">Subtle</Button>
-      <Button appearance="ghost">Ghost</Button>
-      <Button color="violet" appearance="primary">
-        Violet
-      </Button>
-      <Button>Hola</Button>
+    <div>
+      <BrowserRouter>
+        <Routes>
+          <Route exact path="/" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/dashboard" element={<Dashboard />} />
+        </Routes>
+      </BrowserRouter>
     </div>
-  )
+  );
 }
-
-export default App
+export default App;
