@@ -31,6 +31,17 @@ export const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
 export const db = getFirestore(app);
 
+export const useAuth = () => {
+  return {
+    user: { email: localStorage.getItem("email") },
+    logOut: () => {
+      signOut(auth);
+      localStorage.removeItem("email");
+    },
+    loading: false,
+  };
+};
+
 export const provider = new GoogleAuthProvider();
 export const googlePopUp = () => signInWithPopup(auth, provider);
 // export const db = getFirestore(app);
