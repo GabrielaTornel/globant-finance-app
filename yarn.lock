@@ -216,7 +216,13 @@
     "@babel/plugin-syntax-jsx" "^7.18.6"
     "@babel/types" "^7.18.10"
 
+<<<<<<< HEAD
 "@babel/runtime@^7.12.5", "@babel/runtime@^7.16.0", "@babel/runtime@^7.17.2", "@babel/runtime@^7.18.3", "@babel/runtime@^7.5.5", "@babel/runtime@^7.6.2", "@babel/runtime@^7.6.3", "@babel/runtime@^7.7.2", "@babel/runtime@^7.7.6", "@babel/runtime@^7.8.4", "@babel/runtime@^7.8.7":
+=======
+
+"@babel/runtime@^7.12.5", "@babel/runtime@^7.16.0", "@babel/runtime@^7.17.2", "@babel/runtime@^7.18.3", "@babel/runtime@^7.5.5", "@babel/runtime@^7.6.2", "@babel/runtime@^7.6.3", "@babel/runtime@^7.7.2", "@babel/runtime@^7.7.6", "@babel/runtime@^7.8.4", "@babel/runtime@^7.8.7":
+
+>>>>>>> 23efa5851879d5537ca7600d278f2720ddc83d9b
   version "7.18.9"
   resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.18.9.tgz#b4fcfce55db3d2e5e080d2490f608a3b9f407f4a"
   integrity sha512-lkqXDcvlFT5rvEjiu6+QYO+1GXrEHRo2LOtS7E4GtX5ESIZOgepqsZBVIj6Pv+a6zqsya9VCgiK1KAK4BvJDAw==
@@ -955,10 +961,16 @@
   integrity sha512-wU5J8rUoo32oSef/rFpOT1HIjLjAv3qIDHkw1QIhODV3OpAVHi5oVzlouozg9obUmZKtbZ0qUe/m7FP0y0yBzA==
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 "@popperjs/core@^2.11.5", "@popperjs/core@^2.11.6":
 =======
 "@popperjs/core@^2.11.5":
 >>>>>>> origin/routes
+=======
+
+"@popperjs/core@^2.11.5":
+
+>>>>>>> 23efa5851879d5537ca7600d278f2720ddc83d9b
   version "2.11.6"
   resolved "https://registry.yarnpkg.com/@popperjs/core/-/core-2.11.6.tgz#cee20bd55e68a1720bdab363ecf0c821ded4cd45"
   integrity sha512-50/17A98tWUfQ176raKiOGXuYpLyyVMkxxG6oylzL3BPOlA6ADGdK7EYunSa4I064xerltq9TGXs8HmOk5E+vw==
@@ -1145,6 +1157,10 @@
     "@types/react" "*"
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+
+>>>>>>> 23efa5851879d5537ca7600d278f2720ddc83d9b
 "@types/react-is@^16.7.1 || ^17.0.0":
   version "17.0.3"
   resolved "https://registry.yarnpkg.com/@types/react-is/-/react-is-17.0.3.tgz#2d855ba575f2fc8d17ef9861f084acc4b90a137a"
@@ -1152,10 +1168,14 @@
   dependencies:
     "@types/react" "*"
 
+<<<<<<< HEAD
 "@types/react-transition-group@^4.4.4", "@types/react-transition-group@^4.4.5":
 =======
 "@types/react-transition-group@^4.4.4":
 >>>>>>> origin/routes
+=======
+"@types/react-transition-group@^4.4.5":
+>>>>>>> 23efa5851879d5537ca7600d278f2720ddc83d9b
   version "4.4.5"
   resolved "https://registry.yarnpkg.com/@types/react-transition-group/-/react-transition-group-4.4.5.tgz#aae20dcf773c5aa275d5b9f7cdbca638abc5e416"
   integrity sha512-juKD/eiSM3/xZYzjuzH6ZwpP+/lejltmiS3QEzV/vmb/Q8+HfDmxu+Baga8UEMGBqV88Nbg4l2hY/K2DkyaLLA==
@@ -2333,7 +2353,13 @@ destroy@1.2.0, destroy@^1.0.4:
   resolved "https://registry.yarnpkg.com/destroy/-/destroy-1.2.0.tgz#4803735509ad8be552934c67df614f94e66fa015"
   integrity sha512-2sJGJTaXIIaR1w4iJSNoN0hnMY7Gpc/n8D4qSCJw8QqFWXf7cuAgnEHxBpweaVcPevC2l3KpjYCx3NypQQgaJg==
 
+<<<<<<< HEAD
 dom-helpers@^5.0.1, dom-helpers@^5.1.3, dom-helpers@^5.2.0, dom-helpers@^5.2.1:
+=======
+
+dom-helpers@^5.0.1, dom-helpers@^5.1.3, dom-helpers@^5.2.0, dom-helpers@^5.2.1:
+
+>>>>>>> 23efa5851879d5537ca7600d278f2720ddc83d9b
   version "5.2.1"
   resolved "https://registry.yarnpkg.com/dom-helpers/-/dom-helpers-5.2.1.tgz#d9400536b2bf8225ad98fe052e029451ac40e902"
   integrity sha512-nRCa7CK3VTrM2NmGkIy4cbK7IZlgBE/PYMn55rrXefr5xXDP0LdtfPnblFDoVdcAfslJ7or6iqAUnx0CCGIWQA==
@@ -4875,6 +4901,10 @@ promise-retry@^2.0.1:
     err-code "^2.0.2"
     retry "^0.12.0"
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 23efa5851879d5537ca7600d278f2720ddc83d9b
 prop-types-extra@^1.1.0:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/prop-types-extra/-/prop-types-extra-1.1.1.tgz#58c3b74cbfbb95d304625975aa2f0848329a010b"
@@ -4883,6 +4913,10 @@ prop-types-extra@^1.1.0:
     react-is "^16.3.2"
     warning "^4.0.0"
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 23efa5851879d5537ca7600d278f2720ddc83d9b
 prop-types@^15.6.2, prop-types@^15.7.2, prop-types@^15.8.1:
   version "15.8.1"
   resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.8.1.tgz#67d87bf1a694f48435cf332c24af10214a3140b5"
@@ -5095,10 +5129,16 @@ react-dom@^18.2.0:
     scheduler "^0.23.0"
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 react-is@^16.13.1, react-is@^16.3.2, react-is@^16.7.0:
 =======
 react-is@^16.13.1, react-is@^16.3.2:
 >>>>>>> origin/routes
+=======
+
+react-is@^16.13.1, react-is@^16.3.2:
+
+>>>>>>> 23efa5851879d5537ca7600d278f2720ddc83d9b
   version "16.13.1"
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.13.1.tgz#789729a4dc36de2999dc156dd6c1d9c18cea56a4"
   integrity sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==
@@ -5139,10 +5179,16 @@ react-router@6.3.0:
     history "^5.2.0"
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 react-transition-group@^4.4.2, react-transition-group@^4.4.5:
 =======
 react-transition-group@^4.4.2:
 >>>>>>> origin/routes
+=======
+
+react-transition-group@^4.4.2:
+
+>>>>>>> 23efa5851879d5537ca7600d278f2720ddc83d9b
   version "4.4.5"
   resolved "https://registry.yarnpkg.com/react-transition-group/-/react-transition-group-4.4.5.tgz#e53d4e3f3344da8521489fbef8f2581d42becdd1"
   integrity sha512-pZcd1MCJoiKiBR2NRxeCRg13uCXbydPnmB4EOeRrY7480qNWO8IIgQG6zlDkm6uRMsURXPuKq0GWtiM59a5Q6g==
