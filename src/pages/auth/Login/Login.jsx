@@ -46,6 +46,8 @@ const Login = () => {
       return;
     }
 
+    //¿hace falta una condicional para login con google?
+
     try {
       await loginWithEmailAndPassword(email, password);
       const Toast = Swal.mixin({
@@ -135,17 +137,18 @@ const Login = () => {
           />
         </Form.Group>
         <div className={styles.ContainerButton}>
-        <Button variant="primary" type="submit" className="mb-3">
+        <Button variant="primary" type="submit" className="mb-3" >
           Iniciar Sesion
         </Button>
+        
+        </div>
+      </Form>
         <Button variant="primary" type="submit" className="mb-3" onClick={signInWithGoogle}>
           Google
         </Button>
         <Link to="/register" className="Link-register">
           ¿No tienes cuenta? Regístrate
         </Link>
-        </div>
-      </Form>
       </div>
       </div>
     </div>
