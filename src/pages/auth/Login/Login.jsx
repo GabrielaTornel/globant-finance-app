@@ -141,10 +141,6 @@ const Login = () => {
           Iniciar Sesion
         </Button>
         
-        <Button color="red" appearance="primary" type="submit" onClick={signInWithGoogle}>
-      <GooglePlusCircleIcon /> Google
-    </Button>
-        
         </div>
       </Form>
         <Button variant="primary" type="submit" className="mb-3" onClick={signInWithGoogle}>
@@ -153,9 +149,6 @@ const Login = () => {
         <Link to="/register" className="Link-register">
           ¿No tienes cuenta? Regístrate
         </Link>
-
-      </Form>
-
       </div>
       </div>
     </div>
