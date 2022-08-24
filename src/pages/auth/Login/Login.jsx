@@ -7,6 +7,8 @@ import { loginWithEmailAndPassword } from "../../../firebaseConfig/init";
 import Swal from "sweetalert2";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
+import logo from "../../../assets/img/logo-1.png";
+import styles from "../Login/login.module.css"
 
 const Login = () => {
   const navigate = useNavigate();
@@ -106,23 +108,23 @@ const Login = () => {
   };
 
   return (
-    <>
+    <div className={styles.ContainerLogin}>
+    <img src={logo} className={styles.imgLogo}/>
+    <div className={styles.formContainer}>
+      <div>
       <Form onSubmit={handleSubmit}>
+        <h3> Iniciar sesion </h3>
         <Form.Group className="mb-3" controlId="formBasicEmail">
-          <Form.Label>Email address</Form.Label>
           <Form.Control
             name="email"
             type="email"
             placeholder="Correo electrónico"
             onChange={handleChange}
           />
-          <Form.Text className="text-muted">
-            We'll never share your email with anyone else.
-          </Form.Text>
+         
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="formBasicPassword">
-          <Form.Label>Password</Form.Label>
           <Form.Control
             name="password"
             label="Password"
@@ -132,20 +134,21 @@ const Login = () => {
             onChange={handleChange}
           />
         </Form.Group>
-        <Form.Group className="mb-3" controlId="formBasicCheckbox">
-          <Form.Check type="checkbox" label="Check me out" />
-        </Form.Group>
-        <Button variant="primary" type="submit">
+        <div className={styles.ContainerButton}>
+        <Button variant="primary" type="submit" className="mb-3">
           Iniciar Sesion
         </Button>
-        <Button variant="primary" type="submit" onClick={signInWithGoogle}>
+        <Button variant="primary" type="submit" className="mb-3" onClick={signInWithGoogle}>
           Google
         </Button>
         <Link to="/register" className="Link-register">
           ¿No tienes cuenta? Regístrate
         </Link>
+        </div>
       </Form>
-    </>
+      </div>
+      </div>
+    </div>
   );
 };
 
