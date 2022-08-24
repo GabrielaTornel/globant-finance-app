@@ -7,6 +7,14 @@ import { loginWithEmailAndPassword } from "../../../firebaseConfig/init";
 import Swal from "sweetalert2";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
+import logo from "../../../assets/icomoon/logo1.png";
+import iconGoogle from "../../../assets/icomoon/googleIcon.png"
+import styles from "../Login/login.module.css";
+import traducciones from "../../../static/en/us.json"
+
+let language = "es"
+let login_title = language === "en" ? traducciones.login_title_en : traducciones.login_title_es;
+console.log(login_title, "holaaaaa");
 
 const Login = () => {
   const navigate = useNavigate();
@@ -43,6 +51,8 @@ const Login = () => {
       });
       return;
     }
+
+    //¿hace falta una condicional para login con google?
 
     try {
       await loginWithEmailAndPassword(email, password);
@@ -107,46 +117,73 @@ const Login = () => {
   };
 
   return (
-    <>
-      <Form onSubmit={handleSubmit}>
-        <Form.Group className="mb-3" controlId="formBasicEmail">
-          <Form.Label>Email address</Form.Label>
-          <Form.Control
-            name="email"
-            type="email"
-            placeholder="Correo electrónico"
-            onChange={handleChange}
-          />
-          <Form.Text className="text-muted">
-            We'll never share your email with anyone else.
-          </Form.Text>
-        </Form.Group>
+    <div className={styles.ContainerLogin}>
+      <img src={logo} className={styles.imgLogo} />
+      <div className={styles.formContainer}>
+        <div>
+          <Form onSubmit={handleSubmit}>
+            <h3> {login_title} </h3>
+            <Form.Group className="mb-3" controlId="formBasicEmail">
+              <Form.Control
+                name="email"
+                type="email"
+                placeholder="Correo electrónico"
+                onChange={handleChange}
+              />
+            </Form.Group>
 
-        <Form.Group className="mb-3" controlId="formBasicPassword">
-          <Form.Label>Password</Form.Label>
-          <Form.Control
-            name="password"
-            label="Password"
-            type="password"
-            autoComplete="off"
-            placeholder="Contraseña"
-            onChange={handleChange}
-          />
-        </Form.Group>
-        <Form.Group className="mb-3" controlId="formBasicCheckbox">
-          <Form.Check type="checkbox" label="Check me out" />
-        </Form.Group>
-        <Button variant="primary" type="submit">
-          Iniciar Sesion
-        </Button>
-        <Button variant="primary" type="submit" onClick={signInWithGoogle}>
-          Google
-        </Button>
-        <Link to="/register" className="Link-register">
-          ¿No tienes cuenta? Regístrate
-        </Link>
-      </Form>
-    </>
+            <Form.Group className="mb-3" controlId="formBasicPassword">
+              <Form.Control
+                name="password"
+                label="Password"
+                type="password"
+                autoComplete="off"
+                placeholder="Contraseña"
+                onChange={handleChange}
+              />
+            </Form.Group>
+            <div className={styles.ContainerButton}>
+              <style type="text/css">
+                {`
+                  .btn-purple {
+                  background-color: #605DEC;
+                  color: white;
+                  }
+                `}
+              </style>
+              <Button
+                variant="purple"
+                type="submit"
+                className="mb-3 buttonColor"
+              >
+                Iniciar Sesion
+              </Button>
+            </div>
+          </Form>
+          <style type="text/css">
+            {`
+              .btn-purpleT {
+              background-color: #5f5dec9a;
+              color: white;
+              }
+            `}
+          </style>
+          <div className={styles.containerGoogle}>
+            <Button
+              variant="purpleT"
+              type="submit"
+              className="mb-3 btnGoogle"
+              onClick={signInWithGoogle}
+            ><img src={iconGoogle} className={styles.iconGoogle} alt="logo Google"/>
+                Inicia con Google
+            </Button>
+            <Link to="/register" className="Link-register">
+              ¿No tienes cuenta? Regístrate
+            </Link>
+          </div>
+        </div>
+      </div>
+    </div>
   );
 };
 
