@@ -160,7 +160,15 @@ const Register = () => {
                 </Form.Control>
             </Form.Group>
             <div className={styles.ContainerButton}>
-              <Button variant="primary" type="submit" className="mb-3">
+            <style type="text/css">
+                {`
+                  .btn-purple {
+                  background-color: #605DEC;
+                  color: white;
+                  }
+                `}
+              </style>
+              <Button variant="purple" type="submit" className="mb-3">
                 Crear cuenta
               </Button>
               <Link to="/" className="Link-register">

@@ -25,11 +25,16 @@ h3 {
   text-align: center;
 }
 
-.ContainerButton {
+.ContainerButton , .containerGoogle {
   display: flex;
   flex-direction: column;
 }
 
 .ButtonLogin {
   margin-top: 5px;
+}
+
+.iconGoogle{
+    margin-right: 6px;
+    color: #5f5dec9a;
 }

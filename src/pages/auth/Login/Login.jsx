@@ -8,7 +8,8 @@ import Swal from "sweetalert2";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import logo from "../../../assets/icomoon/logo-1.png";
-import styles from "../Login/login.module.css"
+import iconGoogle from "../../../assets/icomoon/googleIcon.png"
+import styles from "../Login/login.module.css";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -111,45 +112,70 @@ const Login = () => {
 
   return (
     <div className={styles.ContainerLogin}>
-    <img src={logo} className={styles.imgLogo}/>
-    <div className={styles.formContainer}>
-      <div>
-      <Form onSubmit={handleSubmit}>
-        <h3> Iniciar sesion </h3>
-        <Form.Group className="mb-3" controlId="formBasicEmail">
-          <Form.Control
-            name="email"
-            type="email"
-            placeholder="Correo electrónico"
-            onChange={handleChange}
-          />
-         
-        </Form.Group>
+      <img src={logo} className={styles.imgLogo} />
+      <div className={styles.formContainer}>
+        <div>
+          <Form onSubmit={handleSubmit}>
+            <h3> Iniciar sesion </h3>
+            <Form.Group className="mb-3" controlId="formBasicEmail">
+              <Form.Control
+                name="email"
+                type="email"
+                placeholder="Correo electrónico"
+                onChange={handleChange}
+              />
+            </Form.Group>
 
-        <Form.Group className="mb-3" controlId="formBasicPassword">
-          <Form.Control
-            name="password"
-            label="Password"
-            type="password"
-            autoComplete="off"
-            placeholder="Contraseña"
-            onChange={handleChange}
-          />
-        </Form.Group>
-        <div className={styles.ContainerButton}>
-        <Button variant="primary" type="submit" className="mb-3" >
-          Iniciar Sesion
-        </Button>
-        
+            <Form.Group className="mb-3" controlId="formBasicPassword">
+              <Form.Control
+                name="password"
+                label="Password"
+                type="password"
+                autoComplete="off"
+                placeholder="Contraseña"
+                onChange={handleChange}
+              />
+            </Form.Group>
+            <div className={styles.ContainerButton}>
+              <style type="text/css">
+                {`
+                  .btn-purple {
+                  background-color: #605DEC;
+                  color: white;
+                  }
+                `}
+              </style>
+              <Button
+                variant="purple"
+                type="submit"
+                className="mb-3 buttonColor"
+              >
+                Iniciar Sesion
+              </Button>
+            </div>
+          </Form>
+          <style type="text/css">
+            {`
+              .btn-purpleT {
+              background-color: #5f5dec9a;
+              color: white;
+              }
+            `}
+          </style>
+          <div className={styles.containerGoogle}>
+            <Button
+              variant="purpleT"
+              type="submit"
+              className="mb-3 btnGoogle"
+              onClick={signInWithGoogle}
+            ><img src={iconGoogle} className={styles.iconGoogle}/>
+                Inicia con Google
+            </Button>
+            <Link to="/register" className="Link-register">
+              ¿No tienes cuenta? Regístrate
+            </Link>
+          </div>
         </div>
-      </Form>
-        <Button variant="primary" type="submit" className="mb-3" onClick={signInWithGoogle}>
-          Google
-        </Button>
-        <Link to="/register" className="Link-register">
-          ¿No tienes cuenta? Regístrate
-        </Link>
-      </div>
       </div>
     </div>
   );
