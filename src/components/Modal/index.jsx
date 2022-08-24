@@ -28,7 +28,7 @@ export const ModalDashboard = () => {
   const handleSendGasto = async () => {
     await addDoc(collection(db, "Gastos"), {
       Monto: monto || null,
-      Category: "comida",
+      Category: "compras",
       Fecha: Timestamp.fromDate(new Date()),
     });
     alert("enviado")

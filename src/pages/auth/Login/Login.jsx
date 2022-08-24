@@ -7,7 +7,7 @@ import { loginWithEmailAndPassword } from "../../../firebaseConfig/init";
 import Swal from "sweetalert2";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
-import logo from "../../../assets/img/logo-1.png";
+import logo from "../../../assets/icomoon/logo-1.png";
 import styles from "../Login/login.module.css"
 
 const Login = () => {

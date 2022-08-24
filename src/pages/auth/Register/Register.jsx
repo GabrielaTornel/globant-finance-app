@@ -7,7 +7,7 @@ import Swal from "sweetalert2";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import styles from "../Register/register.module.css";
-import logo from "../../../assets/img/logo-1.png";
+import logo from "../../../assets/icomoon/logo-1.png";
 
 const Register = () => {
   const [email, setEmail] = useState("");
