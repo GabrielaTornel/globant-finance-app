@@ -148,7 +148,7 @@ const Register = () => {
         <Button appearance="primary" type="submit">
           Crear cuenta
         </Button>
-        <Link to="/" className="Link-register">
+        <Link to="/register" className="Link-register">
           Iniciar sesión
         </Link>
       </Form>

@@ -1,51 +1,32 @@
-import React from 'react';
-import {BrowserRouter, Route} from 'react-router-dom';
-import {NotFoundComponent} from '../pages/NotFound/NotFound';
-import AppRoutes from "../routing/AppRoutes";
-import {AuthRoutes} from '../routing/AuthRoutes';
-import PrivateRoutes from '../routing/PrivateRoutes';
-import PublicRouter from '../routing/PublicRoutes';
+import React, {useState} from 'react';
+import {BrowserRouter, Route, Routes} from 'react-router-dom';
+import { Header } from '../components/Header/Header';
 import Login from '../pages/auth/Login/Login';
+import Register from '../pages/auth/Register/Register';
+import Dashboard from '../pages/Dashboard/Dashboard';
 
 
-//Se debe crear una simulación de Backend 
-//Router principal 
-export  const   MainRouter = () => {
-  let userEmail =   window.localStorage.getItem("email")
-  console.log("email", userEmail)
-  
-const [stateUser, setStateUser] =React.useState({
-    islogged: userEmail = "" ? false: true,
-    isVerified:true,
-})
+function MainRouter ()  {
 
-const { islogged, isVerified } = stateUser
+const [user, setUser] = useState({
+  email: localStorage.getItem("email"),
+  password: "",
+});
 
-return (
-    <div>
-      <BrowserRouter>
-        <NotFoundComponent>
 
-            //La página que todos ven siempre 
-        <Route path="/" element={<Login/>} />
 
-          {/* <Route path="/" element={<PublicRouter islogged={islogged}> <AuthRoutes setStateUser={setStateUser} statelUser={statelUser}/> </PublicRouter>}/> */}
-          <Route path="/register" element={<PublicRouter islogged={islogged}> <AuthRoutes setStateUser={setStateUser} stateUser={stateUser}/> </PublicRouter>}/>
-          <Route path="/dashboard" element={<PrivateRoutes islogged={islogged}> <AppRoutes islogged ={islogged}/></PrivateRoutes>}/>
-
-        </NotFoundComponent>
-      </BrowserRouter>
-    </div>
+  return (
+        <BrowserRouter>
+          <Routes>
+          <Route path='/' element={<Login  user={user} setUser = {setUser}/>} />
+          <Route path='/register' element={<Register />} />
+            
+            <Route path='/dashboard/' element={
+            user.email === null ? (<Login/>) : (<><Header user={user} setUser = {setUser} /> <Dashboard/> </>)
+            } />
+          </Routes>
+        </BrowserRouter>
   );
 
 }
-
-/* 
-const verificando = (
-  if (localStorage ==  isVerified){
-
-  } else {}
-  
-) 
- */
-
+export default MainRouter;

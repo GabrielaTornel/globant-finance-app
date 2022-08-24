@@ -46,6 +46,7 @@ const Login = () => {
 
     try {
       await loginWithEmailAndPassword(email, password);
+      let localEmail =  localStorage.setItem("email", email);
       const Toast = Swal.mixin({
         toast: true,
         position: "top-end",

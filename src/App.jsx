@@ -1,7 +1,7 @@
 import React from "react";
 import "rsuite/styles/index.less";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { MainRouter } from './routing/MainRoutes'
+import  MainRouter  from './routing/MainRoutes'
 
 function App() {
   return (

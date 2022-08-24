@@ -47,6 +47,18 @@ export const loginWithGoogle = () => {
   }
   return googlePopUp();
 };
+export const useAuth = () => {
+  return {
+    user: { email: localStorage.getItem("email") },
+    logOut: () => {
+      signOut(auth);
+      localStorage.removeItem("email");
+    },
+    loading: false,
+  };
+};
+
+
 
 export const signUp = (email, password) =>
   createUserWithEmailAndPassword(auth, email, password);
