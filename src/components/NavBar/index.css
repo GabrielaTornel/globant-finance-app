@@ -1,0 +1,13 @@
+.containerNav {
+  background-color: #605DEC;
+  width: 100%;
+  color: azure;
+  justify-content: end;
+  display: flex;
+  
+}
+
+.nav-nav{
+  justify-content: end;
+
+}
