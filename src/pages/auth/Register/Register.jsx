@@ -1,32 +1,31 @@
 import "rsuite/styles/index.less";
 import React from "react";
-import { Form, Schema } from "rsuite";
 import { Link, useNavigate } from "react-router-dom";
-import Button from "rsuite/Button";
 import { useState } from "react";
 import { signUp } from "../../../firebaseConfig/init";
 import Swal from "sweetalert2";
-
-
+import Button from "react-bootstrap/Button";
+import Form from "react-bootstrap/Form";
+import styles from "../Register/register.module.css";
+import logo from "../../../assets/icomoon/logo-1.png";
 
 const Register = () => {
-
   const [email, setEmail] = useState("");
   const [passwordOne, setPasswordOne] = useState("");
   const [passwordTwo, setPasswordTwo] = useState("");
   const navigate = useNavigate();
-  
 
-  const handleChange = (e) => {
-    switch (e.target.name) {
+  const handleChange = (event) => {
+    console.log(event.target.name);
+    switch (event.target.name) {
       case "email":
-        setEmail(e.target.value);
+        setEmail(event.target.value);
         break;
       case "password":
-        setPasswordOne(e.target.value);
+        setPasswordOne(event.target.value);
         break;
-      case "password-two":
-        setPasswordTwo(e.target.value);
+      case "password2":
+        setPasswordTwo(event.target.value);
         break;
       default:
         break;
@@ -35,8 +34,8 @@ const Register = () => {
 
   // Validación formulario register
 
-  const handleSubmit = async (e) => {
-    
+  const handleSubmit = async (event) => {
+    event.preventDefault();
     const validEmail = /[\w\d\.-]+@[\w\d\.-]+\.[\w\d\.-]+/g;
 
     if (!validEmail.test(email)) {
@@ -88,7 +87,7 @@ const Register = () => {
       });
 
       navigate("/dashboard");
-      
+
       // manejo de errores de firebase
     } catch (error) {
       switch (error.code) {
@@ -120,40 +119,59 @@ const Register = () => {
   };
 
   return (
-    <div>
-      <h3>Crear cuenta</h3>
-      <Form onSubmit={handleSubmit}>
-        <input
-          name="email"
-          type="email"
-          placeholder="Correo electrónico"
-          onChange={handleChange}
-          value={email}
-        ></input>
-        <input
-          name="password"
-          type="password"
-          placeholder="Contraseña"
-          onChange={handleChange}
-          value={passwordOne}
-        ></input>
-        <input
-          name="password-two"
-          type="password"
-          placeholder="Repetir contraseña"
-          onChange={handleChange}
-          value={passwordTwo}
-        ></input>
+    <div className={styles.ContainerLogin}>
+      <img src={logo} className={styles.imgLogo} />
+      <div className={styles.formContainer}>
+        <div>
+          <Form onSubmit={handleSubmit}>
+            <h3> Crear cuenta </h3>
+            <Form.Group className="mb-3" controlId="formBasicEmail">
+              <Form.Control
+                name="email"
+                type="email"
+                placeholder="Correo electrónico"
+                value={email}
+                onChange={handleChange}
+              />
+            </Form.Group>
 
-        <Button appearance="primary" type="submit">
-          Crear cuenta
-        </Button>
-        <Link to="/" className="Link-register">
-          Iniciar sesión
-        </Link>
-      </Form>
+            <Form.Group className="mb-3" controlId="formBasicPassword3">
+              <Form.Control
+                name="password"
+                label="Password"
+                type="password"
+                autoComplete="off"
+                placeholder="Contraseña"
+                value={passwordOne}
+                onChange={handleChange}
+              />
+                             
+            </Form.Group>
+            <Form.Group className="mb-3" controlId="formBasicPassword4">
+            <Form.Control
+                name="password2"
+                label="Password"
+                type="password"
+                autoComplete="off"
+                placeholder="Repetir Contraseña"
+                value={passwordTwo}
+                onChange={handleChange}>
+
+                </Form.Control>
+            </Form.Group>
+            <div className={styles.ContainerButton}>
+              <Button variant="primary" type="submit" className="mb-3">
+                Crear cuenta
+              </Button>
+              <Link to="/" className="Link-register">
+                Iniciar sesión
+              </Link>
+            </div>
+          </Form>
+        </div>
+      </div>
     </div>
   );
-}
+};
 
 export default Register;
