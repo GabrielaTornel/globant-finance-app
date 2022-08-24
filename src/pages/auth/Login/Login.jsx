@@ -61,12 +61,12 @@ function Login() {
         <Button color="red" appearance="primary" type="submit" onClick={signInWithGoogle}>
       <GooglePlusCircleIcon /> Google
     </Button>
-        
+
         <Link to="/register" className="Link-register">
           ¿ No tienes cuenta? Regístrate
         </Link>
       </Form>
-     
+
     </div>
   );
 }
