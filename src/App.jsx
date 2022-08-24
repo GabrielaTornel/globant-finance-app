@@ -4,6 +4,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Login from "./pages/auth/Login/Login";
 import Register from "./pages/auth/Register/Register";
 import Dashboard from "./pages/Dashboard/Dashboard";
+import "./App.css"
 
 function App() {
   return (

@@ -10,32 +10,34 @@ import {
   DatePicker,
 } from "rsuite";
 import "./index.css";
-import { addDoc, collection, Timestamp } from "firebase/firestore"
-import {db}  from "../../firebaseConfig/init"
+import { addDoc, collection, Timestamp } from "firebase/firestore";
+import { db } from "../../firebaseConfig/init";
 
 export const ModalDashboard = () => {
   const [open, setOpen] = React.useState(false);
   const [overflow, setOverflow] = React.useState(true);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
+  const [category, setCategory] = React.useState("");
 
-  const [monto, setMonto] = React.useState("")
-  const styles = {
-    width: 200,
-    marginBottom: 10,
-  }; 
+  const categorySelect = (e) => {
+    setCategory(e.target.value);
+  };
 
+  const [amount, setAmount] = React.useState("");
+  
+  console.log(category);
   const handleSendGasto = async () => {
     await addDoc(collection(db, "Gastos"), {
-      Monto: monto || null,
-      Category: "compras",
+      Monto: amount || null,
+      Category: category,
       Fecha: Timestamp.fromDate(new Date()),
     });
-    alert("enviado")
-  }
-  const handleChangeMonto = (e) => {
-    setMonto(e.target.value);
-    console.log(monto)
+    alert("enviado");
+  };
+  const handleChangeAmount = (e) => {
+    setAmount(e.target.value);
+    console.log(amount);
   };
   return (
     <>
@@ -54,18 +56,34 @@ export const ModalDashboard = () => {
           <Modal.Title>Agregar Gasto</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          Monto
-          <InputGroup style={styles}>
-            <InputGroup.Addon>COP$</InputGroup.Addon>
-            <Input />
-            <InputGroup.Addon onChange={handleChangeMonto} defaultValue={monto}>.00</InputGroup.Addon>
-          </InputGroup>
-          <Dropdown title="Categoria">
-            <Dropdown.Item>Entretenimiento</Dropdown.Item>
-            <Dropdown.Item>Comida</Dropdown.Item>
-            <Dropdown.Item>Servicios</Dropdown.Item>
-          </Dropdown>
-          <DatePicker format="yyyy-MM" />
+          <div className="content-modal">
+          <div className="modal-content-amount">
+            <span>Ingresa nuevo egreso COP$  </span>
+            <input
+            title=""
+            type="text"
+            className="amount"
+            placeholder="Monto"
+            onChange={handleChangeAmount}
+            eventkey={amount}
+          />.00
+            </div>
+          <div className="modal-content">
+          <span>Selecciona Categoria </span>
+              <select className="category-container"value={category} onChange={categorySelect}>
+                <option>Entretenimiento</option>
+                <option>Servicios</option>
+                <option>Restaurante</option>
+                <option>Compras</option>
+                <option>Salud</option>
+                <option>Regalos</option>
+              </select>
+            
+          </div>
+          <div className="modal-content">
+          <span>Selecciona fecha </span><DatePicker format="yyyy-MM" />
+          </div>
+          </div>
         </Modal.Body>
         <Modal.Footer>
           <Button onClick={handleSendGasto} color="violet" appearance="subtle">
