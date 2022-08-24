@@ -1,0 +1,5 @@
+.dashboard-container {
+  display: grid;
+  padding: 10%;
+  grid-template-columns: 50% 40%;
+}
