@@ -7,9 +7,14 @@ import { loginWithEmailAndPassword } from "../../../firebaseConfig/init";
 import Swal from "sweetalert2";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
-import logo from "../../../assets/icomoon/logo-1.png";
+import logo from "../../../assets/icomoon/logo1.png";
 import iconGoogle from "../../../assets/icomoon/googleIcon.png"
 import styles from "../Login/login.module.css";
+import traducciones from "../../../static/en/us.json"
+
+let language = "es"
+let login_title = language === "en" ? traducciones.login_title_en : traducciones.login_title_es;
+console.log(login_title, "holaaaaa");
 
 const Login = () => {
   const navigate = useNavigate();
@@ -116,7 +121,7 @@ const Login = () => {
       <div className={styles.formContainer}>
         <div>
           <Form onSubmit={handleSubmit}>
-            <h3> Iniciar sesion </h3>
+            <h3> {login_title} </h3>
             <Form.Group className="mb-3" controlId="formBasicEmail">
               <Form.Control
                 name="email"
@@ -168,7 +173,7 @@ const Login = () => {
               type="submit"
               className="mb-3 btnGoogle"
               onClick={signInWithGoogle}
-            ><img src={iconGoogle} className={styles.iconGoogle}/>
+            ><img src={iconGoogle} className={styles.iconGoogle} alt="logo Google"/>
                 Inicia con Google
             </Button>
             <Link to="/register" className="Link-register">
