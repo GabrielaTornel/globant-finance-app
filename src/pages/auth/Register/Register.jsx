@@ -7,7 +7,7 @@ import Swal from "sweetalert2";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import styles from "../Register/register.module.css";
-import logo from "../../../assets/icomoon/logo-1.png";
+import logo from "../../../assets/icomoon/logo1.png";
 
 const Register = () => {
   const [email, setEmail] = useState("");
@@ -160,7 +160,15 @@ const Register = () => {
                 </Form.Control>
             </Form.Group>
             <div className={styles.ContainerButton}>
-              <Button variant="primary" type="submit" className="mb-3">
+            <style type="text/css">
+                {`
+                  .btn-purple {
+                  background-color: #605DEC;
+                  color: white;
+                  }
+                `}
+              </style>
+              <Button variant="purple" type="submit" className="mb-3">
                 Crear cuenta
               </Button>
               <Link to="/" className="Link-register">
