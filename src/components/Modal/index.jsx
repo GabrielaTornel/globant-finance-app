@@ -1,5 +1,4 @@
 import React from "react";
-
 import {
   Input,
   InputGroup,
@@ -11,18 +10,32 @@ import {
   DatePicker,
 } from "rsuite";
 import "./index.css";
+import { addDoc, collection, Timestamp } from "firebase/firestore"
+import {db}  from "../../firebaseConfig/init"
+
 export const ModalDashboard = () => {
   const [open, setOpen] = React.useState(false);
   const [overflow, setOverflow] = React.useState(true);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
+
+  const [monto, setMonto] = React.useState("")
   const styles = {
     width: 200,
     marginBottom: 10,
-  };
-  const stylesModal = {
-    width: 200,
-    marginBottom: 10,
+  }; 
+
+  const handleSendGasto = async () => {
+    await addDoc(collection(db, "Gastos"), {
+      Monto: monto || null,
+      Category: "comida",
+      Fecha: Timestamp.fromDate(new Date()),
+    });
+    alert("enviado")
+  }
+  const handleChangeMonto = (e) => {
+    setMonto(e.target.value);
+    console.log(monto)
   };
   return (
     <>
@@ -45,7 +58,7 @@ export const ModalDashboard = () => {
           <InputGroup style={styles}>
             <InputGroup.Addon>COP$</InputGroup.Addon>
             <Input />
-            <InputGroup.Addon>.00</InputGroup.Addon>
+            <InputGroup.Addon onChange={handleChangeMonto} defaultValue={monto}>.00</InputGroup.Addon>
           </InputGroup>
           <Dropdown title="Categoria">
             <Dropdown.Item>Entretenimiento</Dropdown.Item>
@@ -55,10 +68,10 @@ export const ModalDashboard = () => {
           <DatePicker format="yyyy-MM" />
         </Modal.Body>
         <Modal.Footer>
-          <Button onClick={handleClose} appearance="primary">
+          <Button onClick={handleSendGasto} color="violet" appearance="subtle">
             Ok
           </Button>
-          <Button onClick={handleClose} appearance="subtle">
+          <Button onClick={handleClose} color="red" appearance="primary">
             Cancel
           </Button>
         </Modal.Footer>

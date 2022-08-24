@@ -7,6 +7,7 @@ import './index.css'
 
 
 function Dashboard() {
+  console.log(localStorage)
   return (
     <>
       <header>  <Navbar /></header>
