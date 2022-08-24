@@ -1,7 +1,15 @@
-import React from 'react'
+import React from "react";
+import { Nav } from "rsuite";
+import CloseIcon from "@rsuite/icons/Close";
+import "./index.css";
 
-export default function index() {
+export const Navbar = () => {
   return (
-    <div>index</div>
-  )
-}
+    
+      <Nav className="containerNav">
+        <Nav.Item className="nav-nav">email@gmail.com</Nav.Item>
+        <Nav.Item className="nav-nav" icon={<CloseIcon />}></Nav.Item>
+      </Nav>
+    
+  );
+};

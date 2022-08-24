@@ -7,28 +7,15 @@ import { useState } from "react";
 import { signUp } from "../../../firebaseConfig/init";
 import Swal from "sweetalert2";
 
-//propiedades de la libreria
-const model = Schema.Model({
-  email: Schema.Types.StringType().isEmail(
-    "Please enter a valid email address."
-  ),
-  password: Schema.Types.StringType().isRequired("This field is required."),
-});
 
-const TextField = ({ name, label, accepter, ...rest }) => (
-  <Form.Group controlId={name}>
-    <Form.ControlLabel>{label} </Form.ControlLabel>
-    <Form.Control name={name} accepter={accepter} {...rest} />
-  </Form.Group>
-);
 
-function Register() {
+const Register = () => {
+
   const [email, setEmail] = useState("");
   const [passwordOne, setPasswordOne] = useState("");
   const [passwordTwo, setPasswordTwo] = useState("");
-
   const navigate = useNavigate();
-  const [error, setError] = useState();
+  
 
   const handleChange = (e) => {
     switch (e.target.name) {
@@ -46,7 +33,21 @@ function Register() {
     }
   };
 
+  // Validación formulario register
+
   const handleSubmit = async (e) => {
+    
+    const validEmail = /[\w\d\.-]+@[\w\d\.-]+\.[\w\d\.-]+/g;
+
+    if (!validEmail.test(email)) {
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Ingrese un correo electrónico válido",
+      });
+      return;
+    }
+
     if (email === "" || passwordOne === "" || passwordTwo === "") {
       Swal.fire({
         icon: "error",
@@ -55,6 +56,7 @@ function Register() {
       });
       return;
     }
+
     if (passwordOne !== passwordTwo) {
       Swal.fire({
         icon: "error",
@@ -66,6 +68,8 @@ function Register() {
 
     try {
       await signUp(email, passwordOne);
+
+      // alert se registró correctamente
       const Toast = Swal.mixin({
         toast: true,
         position: "top-end",
@@ -80,10 +84,12 @@ function Register() {
 
       Toast.fire({
         icon: "success",
-        title: "Ha iniciado sesión con éxito",
+        title: "Su registro se ha realizado con éxito",
       });
 
       navigate("/dashboard");
+      
+      // manejo de errores de firebase
     } catch (error) {
       switch (error.code) {
         case "auth/invalid-email":
