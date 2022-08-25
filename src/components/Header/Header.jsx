@@ -14,7 +14,7 @@ export function Header() {
       await logOut();
       navigate("/");
     } catch (error) {
-      console.log(error);
+      (error);
     }
   };
 

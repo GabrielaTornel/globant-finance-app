@@ -6,17 +6,13 @@ import {
   Toggle,
   Button,
   ButtonToolbar,
-  Dropdown,
-  DatePicker,
 } from "rsuite";
 import "./index.css";
-import { addDoc, collection, Timestamp } from "firebase/firestore";
-import { db } from "../../firebaseConfig/init";
 import Swal from "sweetalert2";
 import { sendExpense } from "../../Helpers/crud";
 import Familia from "../../assets/icomoon/famila.png"
 
-export const ModalDashboard = () => {
+export const ModalDashboard = ({getDataCategories}) => {
   const [open, setOpen] = React.useState(false);
   const [overflow, setOverflow] = React.useState(true);
   const handleOpen = () => setOpen(true);
@@ -34,18 +30,20 @@ export const ModalDashboard = () => {
   const [amount, setAmount] = React.useState("");
 
   const handleConfirm = async () => {
-    await sendExpense(amount, category, mounth);
+    const otra = await sendExpense(amount, category, mounth);
     Swal.fire({
       icon: "success",
       title: "Enviado",
       text: "Registro enviado",
     });
+    amount === "" ? alert("campo vacio") : otra;
     handleClose();
+    getDataCategories()
   };
 
   const handleChangeAmount = (e) => {
     setAmount(e.target.value);
-    console.log(amount);
+
   };
 
   return (
@@ -96,6 +94,7 @@ export const ModalDashboard = () => {
                 <option defaultValue={"8"}>Compras</option>
                 
               </select>
+              
             </div>
             <div className="modal-content">
               <span>Mes</span>
@@ -116,16 +115,24 @@ export const ModalDashboard = () => {
                 <option defaultValue={"10"}>Octubre</option>
                 <option defaultValue={"11"}>Noviembre</option>
                 <option defaultValue={"12"}>Diciembre</option>
-              </select>
-
+              </select> 
             </div>
           </div>
         </Modal.Body>
         <Modal.Footer>
-          <Button onClick={handleConfirm} className="button-modal" color="violet" appearance="subtle">
-             Guardar
+          <Button
+            onClick={handleConfirm}
+            className="button-modal"
+            color="violet"
+            appearance="subtle"
+          >
+            Guardar
           </Button>
-          <Button onClick={handleClose} className="button-modal" appearance="subtle">
+          <Button
+            onClick={handleClose}
+            className="button-modal"
+            appearance="subtle"
+          >
             Cancelar
           </Button>
         </Modal.Footer>
