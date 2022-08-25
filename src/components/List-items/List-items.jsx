@@ -1,7 +1,10 @@
 import React from 'react'
+import { getInfo } from '../../Helpers/crud';
 
+export const ItemsData= () => {
 
-export const ItemsProps = () => {
+  const items = getInfo();
+  console.log(items);
   return (
     <div></div>
   );

@@ -4,6 +4,7 @@ import { Navbar } from "../../components/NavBar";
 import { ListItems } from "../../components/List-items";
 
 import './index.css'
+import { ItemsData } from "../../components/List-items/List-items";
 
 
 function Dashboard() {
@@ -19,6 +20,7 @@ function Dashboard() {
         </section>
         <section > 
           <ListItems />
+          <ItemsData />
         </section>
       
       </main>

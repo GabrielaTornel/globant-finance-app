@@ -8,7 +8,8 @@ import {
   GoogleAuthProvider,
   signInWithPopup,
 } from "firebase/auth";
-import { getFirestore, collection, addDoc } from "firebase/firestore";
+
+import { getFirestore, collection, getDocs} from "firebase/firestore";
 
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -56,6 +57,10 @@ export const signUp = (email, password) =>
 export const loginWithEmailAndPassword = (email, password) =>
   signInWithEmailAndPassword(auth, email, password);
 
+
+
+  
+
 export {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
@@ -63,3 +68,4 @@ export {
   GoogleAuthProvider,
   signInWithPopup,
 };
+  

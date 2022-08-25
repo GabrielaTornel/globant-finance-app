@@ -12,6 +12,7 @@ import {
 import "./index.css";
 import { addDoc, collection, Timestamp } from "firebase/firestore";
 import { db } from "../../firebaseConfig/init";
+import Swal from "sweetalert2";
 
 export const ModalDashboard = () => {
   const [open, setOpen] = React.useState(false);
@@ -26,14 +27,18 @@ export const ModalDashboard = () => {
 
   const [amount, setAmount] = React.useState("");
   
-  console.log(category);
   const handleSendGasto = async () => {
     await addDoc(collection(db, "Gastos"), {
       Monto: amount || null,
       Category: category,
       Fecha: Timestamp.fromDate(new Date()),
     });
-    alert("enviado");
+    Swal.fire({
+      icon: "success",
+      title: "Enviado",
+      text: "Registro enviado",
+    });
+    handleClose()
   };
   const handleChangeAmount = (e) => {
     setAmount(e.target.value);
@@ -43,7 +48,7 @@ export const ModalDashboard = () => {
     <>
       <hr />
       <ButtonToolbar>
-        <Button onClick={handleOpen}>+</Button>
+        <Button color="violet" appearance="primary"onClick={handleOpen}>Ingresar Gastos</Button>
       </ButtonToolbar>
 
       <Modal

@@ -2,12 +2,11 @@ import React from "react";
 import { List } from "rsuite";
 import "./index.css";
 import IOsIcon from "@rsuite/icons/IOs";
-import {ModalDashboard} from "../Modal/index"
-import { ButtonToolbar, IconButton } from "rsuite";
-import StarIcon from "@rsuite/icons/legacy/Star";
+import { ModalDashboard } from "../Modal/index"
 
 
 export const ListItems = () => {
+  
   const itemsList = [
     {
       id: 0,
@@ -54,6 +53,7 @@ export const ListItems = () => {
   ];
   // const [priceItemsInitial, setPriceItemsInitial] = useState("0.00");
 
+  
   return (
     <div className="list-container">
       {itemsList.map((item, i) => (
