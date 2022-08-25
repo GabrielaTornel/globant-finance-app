@@ -2,9 +2,9 @@ import React from "react";
 import "rsuite/styles/index.less";
 import { Navbar } from "../../components/NavBar";
 import { ListItems } from "../../components/List-items";
-
 import './index.css'
 import { ItemsData } from "../../components/List-items/List-items";
+import { Graph } from "../../components/Graph";
 
 
 function Dashboard() {
@@ -12,11 +12,12 @@ function Dashboard() {
   return (
     
     <>
-      <header>  <Navbar /></header>
-      
+      <header><Navbar /></header>
       <main className="dashboard-container"> 
-       
-        <section>
+        <section className="containerGraph">
+          <Graph/>
+        </section>
+       <section>
           <h1>Dashboard</h1>
         </section>
         <section > 
