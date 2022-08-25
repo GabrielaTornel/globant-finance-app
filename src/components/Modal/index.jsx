@@ -33,12 +33,14 @@ export const ModalDashboard = () => {
   const [amount, setAmount] = React.useState("");
 
   const handleConfirm = async () => {
+    const otra = 
     await sendExpense(amount, category, mounth);
     Swal.fire({
       icon: "success",
       title: "Enviado",
       text: "Registro enviado",
     });
+    ((amount === "" ) ?  alert("campo vacio") : otra);
     handleClose();
   };
 
@@ -88,10 +90,11 @@ export const ModalDashboard = () => {
               >
                 <option>Entretenimiento</option>
                 <option>Servicios</option>
-                <option>Restaurante</option>
+                <option>Restaurantes</option>
                 <option>Compras</option>
                 <option>Salud</option>
                 <option>Regalos</option>
+                <option>Transportes</option>
               </select>
             </div>
             <div className="modal-content">

@@ -57,7 +57,7 @@ export const ModalDescription = (props) => {
           {category !== ""
             ? category.map((item, i) => (
                 <li className="listCategory" key={i}>
-                  {item.Category} {item.Fecha}
+                  {item.Category} Mes: {item.Fecha}
                   <input
                     className="input-itemsSort"
                     defaultValue={item.Monto}

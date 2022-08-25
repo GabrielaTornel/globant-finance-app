@@ -32,5 +32,6 @@ export const sendExpense = async (amount, category,mounth ) => {
     Monto: Number(amount) || null,
     Category: category,
     Fecha: mounth,
+    User : localStorage.getItem("email")
   });
 };
