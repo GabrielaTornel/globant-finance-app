@@ -35,7 +35,7 @@ export const ModalDescription = (props) => {
       const expenseRef = doc(db, "Gastos", id);
       const editExpenses = await updateDoc(expenseRef, {
         Monto: Number(editInput),
-      });
+      }); alert("agregado")
     } catch (error) {
       console.log(error);
     }
@@ -57,7 +57,7 @@ export const ModalDescription = (props) => {
           {category !== ""
             ? category.map((item, i) => (
                 <li className="listCategory" key={i}>
-                  {item.Category} {item.Fecha}
+                  {item.Category} Mes: {item.Fecha}
                   <input
                     className="input-itemsSort"
                     defaultValue={item.Monto}

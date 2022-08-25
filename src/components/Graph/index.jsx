@@ -7,6 +7,7 @@ ChartJS.register(ArcElement, Tooltip, Legend);
 
 const graphStyles = {
   backgroundColor: [
+
     "rgba(242, 191, 39, 0.5)",
     "rgba(199, 22, 19, 0.5)",
     "rgba(164, 193, 54, 0.5)",
@@ -25,6 +26,8 @@ const graphStyles = {
     "rgba(109, 186, 255, 1)",
     "rgba(174, 116, 81, 1)",
     "rgba(255, 202, 137, 1)",
+
+ 
   ],
   borderWidth: 1,
 };
@@ -61,4 +64,7 @@ export const Graph = () => {
   return <>{isConfigReady && <Doughnut data={graphConfig} />}</>;
 };
 
+
 export default Graph;
+
+
