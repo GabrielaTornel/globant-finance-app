@@ -14,6 +14,7 @@ import { addDoc, collection, Timestamp } from "firebase/firestore";
 import { db } from "../../firebaseConfig/init";
 import Swal from "sweetalert2";
 import { sendExpense } from "../../Helpers/crud";
+import Familia from "../../assets/icomoon/famila.png"
 
 export const ModalDashboard = () => {
   const [open, setOpen] = React.useState(false);
@@ -51,7 +52,7 @@ export const ModalDashboard = () => {
     <>
       <hr />
       <ButtonToolbar>
-        <Button color="violet" appearance="primary" onClick={handleOpen}>
+        <Button  className="Button-spend" color="grey" appearance="subtle" onClick={handleOpen}>
           Ingresar Gastos
         </Button>
       </ButtonToolbar>
@@ -85,14 +86,14 @@ export const ModalDashboard = () => {
                 value={category}
                 onChange={categorySelect}
               >
-                <option>Familia</option>
-                <option>Salud</option>
-                <option>Transporte</option>
-                <option>Comestibles</option>
-                <option>Restaurantes</option>
-                <option>Ocio</option>
-                <option>Regalos</option>
-                <option>Compras</option>
+                <option defaultValue={"1"}>Familia</option>
+                <option defaultValue={"2"}>Salud</option>
+                <option defaultValue={"3"}>Transporte</option>
+                <option defaultValue={"4"}>Comestibles</option>
+                <option defaultValue={"5"}>Restaurantes</option>
+                <option defaultValue={"6"}>Ocio</option>
+                <option defaultValue={"7"}>Regalos</option>
+                <option defaultValue={"8"}>Compras</option>
                 
               </select>
             </div>

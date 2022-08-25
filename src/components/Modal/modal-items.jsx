@@ -3,10 +3,12 @@ import PlusIcon from "@rsuite/icons/Plus";
 import { Modal, Button, ButtonToolbar, Placeholder } from "rsuite";
 import { editExpense } from "../../firebaseConfig/FirebaseExpense/editExpense";
 import { getInfoSortCategory } from "../../Helpers/crud";
-import "./index.css";
+import "./modal-items.css";
 import { doc, updateDoc } from "@firebase/firestore";
 import { db } from "../../firebaseConfig/init";
 import Swal from "sweetalert2";
+import Edit from "../../assets/icomoon/edit.png";
+import Add from "../../assets/icomoon/add.png";
 
 export const ModalDescription = (props) => {
   const [open, setOpen] = React.useState(false);
@@ -44,16 +46,16 @@ export const ModalDescription = (props) => {
   return (
     <>
       <ButtonToolbar>
-        <Button id={props.id} onClick={handleOpen}>
-          ➕
+        <Button id={props.id} onClick={handleOpen} className="container-add-button">
+        <img src={Add} className="add-button" ></img>
         </Button>
       </ButtonToolbar>
 
-      <Modal open={open} onClose={handleClose}>
+      <Modal className="modal-spend" open={open} onClose={handleClose}>
         <Modal.Header>
-          <Modal.Title>Gastos {props.id} </Modal.Title>
+          <Modal.Title className="modal-spend">Gastos {props.id} </Modal.Title>
         </Modal.Header>
-        <Modal.Body>
+        <Modal.Body className="body-modal">
           {category !== ""
             ? category.map((item, i) => (
                 <li className="listCategory" key={i}>
@@ -63,17 +65,17 @@ export const ModalDescription = (props) => {
                     defaultValue={item.Monto}
                     onChange={handleInput}
                   /> 
-                  .00{" "}
-                  <button id={item.id} onClick={() => buttonEdit(item.id)}>
-                    ✏️
+                  {" "}
+                  <button  className="container-button-edit" id={item.id} onClick={() => buttonEdit(item.id)}>
+                  <img src={Edit} className="edit-button" ></img>
                   </button>
                 </li>
               ))
             : ""}
         </Modal.Body>
         <Modal.Footer>
-          <Button size="lg" onClick={handleClose} appearance="primary">
-            Ok
+          <Button className="Button" size="lg" onClick={handleClose} color= "grey" appearance="subtle">
+            Guardar
           </Button>
         </Modal.Footer>
       </Modal>
