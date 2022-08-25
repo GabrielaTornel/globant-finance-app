@@ -1,21 +1,27 @@
-import { collection, getDocs,addDoc , Timestamp, where, query } from "firebase/firestore";
+import { collection,onSnapshot, getDocs,addDoc , Timestamp, where, query } from "firebase/firestore";
 import { db } from "../firebaseConfig/init";
 
-export const getInfo = async () => {
-  const email = localStorage.getItem("email");
-  const querySnapshot = await getDocs(collection(db, "Gastos"));
-  const dataItems = []
-  querySnapshot.forEach((doc) => {
-    // console.table(doc.data())
-    dataItems.push({ id: doc.id, ...doc.data() });
-  });
-   return dataItems.filter((item) =>item.user=== email);
-
+export const getInfo = () => {
+  return new Promise((resolve, reject) => {
+    const email = localStorage.getItem("email");
+    onSnapshot(collection(db, "Gastos"), (docs) => {
+    
+      const dataItems = []
+      docs.forEach(doc => {
+        
+        dataItems.push({ id: doc.id, ...doc.data() });
+      });
+      resolve(dataItems.filter((item) => item.user === email));
+    
+    });
+  })
+  
 };
 
 
 export const getInfoSortCategory = async (category) => {
   try {
+    const email = localStorage.getItem("email");
     const refDataQuery = collection(db, "Gastos");
     const q = query(refDataQuery, where("Category", "==", category),
     );
@@ -25,7 +31,7 @@ export const getInfoSortCategory = async (category) => {
       docs.push({ ...doc.data(), id: doc.id });
     });
     console.log(docs)
-    return docs;
+    return docs.filter((item) => item.user === email);
   } catch (error) {}
 };
 

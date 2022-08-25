@@ -6,16 +6,12 @@ import {
   Toggle,
   Button,
   ButtonToolbar,
-  Dropdown,
-  DatePicker,
 } from "rsuite";
 import "./index.css";
-import { addDoc, collection, Timestamp } from "firebase/firestore";
-import { db } from "../../firebaseConfig/init";
 import Swal from "sweetalert2";
 import { sendExpense } from "../../Helpers/crud";
 
-export const ModalDashboard = () => {
+export const ModalDashboard = ({getDataCategories}) => {
   const [open, setOpen] = React.useState(false);
   const [overflow, setOverflow] = React.useState(true);
   const handleOpen = () => setOpen(true);
@@ -41,11 +37,11 @@ export const ModalDashboard = () => {
     });
     amount === "" ? alert("campo vacio") : otra;
     handleClose();
+    getDataCategories()
   };
 
   const handleChangeAmount = (e) => {
     setAmount(e.target.value);
-    console.log(amount);
   };
 
   return (
