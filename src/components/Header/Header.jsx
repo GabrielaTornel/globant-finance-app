@@ -1,7 +1,9 @@
 
 import { useNavigate } from 'react-router-dom';
-import logo from '../../assets/icomoon/logo-1.png';
 import { useAuth } from "../../firebaseConfig/init";
+import Logo from "../../assets/icomoon/logo1.png";
+import Logout from "../../assets/icomoon/logout.png";
+import "./Header.css";
 
 export function Header() {
   const { user, logOut, loading } = useAuth();
@@ -12,27 +14,25 @@ export function Header() {
       await logOut();
       navigate("/");
     } catch (error) {
-      console.log(error);
+      (error);
     }
   };
 
   if (loading) return <h1>loading</h1>;
-
+  const emailUser = localStorage.email
   return (
     <div className="Container-Header">
-      <div className="Content-HeaderInfo">
-        <img src={logo} className="LogoHeader" alt="img" />
-        <h3 data-testid="welcome" className="Welcome">
-          Hola, {user.displayName || user.email}
-        </h3>
+      <div className="header">
+      <div className="nav-logo"><img src= {Logo}></img>
+        <h5 className="greeting">
+          Hola! {emailUser}</h5>
       </div>
-      <div className="Content-BtnLogOut">
         <button
-          className="BtnLogOut"
+          className="contanier-BtnLogOut"
           data-testid="btnLogOutGlobant"
           onClick={handleLogout}
         >
-          Cerrar Sesión
+          <img src= {Logout} className="BtnLogOut"></img>
         </button>
       </div>
     </div>

@@ -59,3 +59,13 @@
   border-radius: 5px;
   padding: 10px;
 }
+.title-modal{
+  text-align: center;
+}
+.button-modal{
+  background-color: #605DEC;
+  color: white;
+}
+.Button-spend{
+  background-color: #605DEC
+}

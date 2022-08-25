@@ -1,12 +1,11 @@
 import {useState, useEffect} from 'react';
 import {db} from './../firebaseConfig/init';
 import {useNavigate} from 'react-router-dom';
-import {doc, getDoc} from 'firebase/firebase/firestore';
-
+import { doc, getDoc } from '@firebase/firestore';
 
 const useGetAnExpense = (id) => {
 	const navigate = useNavigate();
-	const [expense, setExpense] = useState('');
+	const [expense, setExpense] = useState([]);
 
 useEffect(() => {
 	const getAnExpense = async() => {
@@ -18,7 +17,6 @@ useEffect(() => {
 			navigate('/dashboard')
 		}
 	}
-
 	getAnExpense();
 	}, [navigate, id]);
 
@@ -26,3 +24,4 @@ useEffect(() => {
 }
 
 	export default useGetAnExpense;
+ 
