@@ -17,12 +17,6 @@
 
 .greeting{
     color: white;
-    @font-face {
-        font-family: ;
-        src: url(<link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@1,300&display=swap" rel="stylesheet">);
-    };
     margin-top: -2.5rem;
     margin-left: 50rem;
 
