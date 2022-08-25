@@ -9,12 +9,12 @@ export const DataContext = createContext([])
 let itemsDB = [];
 const fetchData = async () => {
   const items = await getInfo();
-  console.log("items", items);
+  ("items", items);
   return itemsDB = items;
   
 };
 fetchData();
-console.log(itemsDB, "DB")
+
 
 
 ReactDOM.createRoot(document.getElementById('root')).render(
