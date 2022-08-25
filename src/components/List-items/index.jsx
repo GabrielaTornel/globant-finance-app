@@ -8,7 +8,11 @@ import { ModalDescription } from "../Modal/modal-items";
 
 export const ListItems = () => {
   const [itemsCataegory, setItemsCataegory] = React.useState([]);
+
+  /* console.log("itemsCataegory", itemsCataegory) */
+
   const [total, setTotal] = React.useState(0);
+
   // console.log(getInfoSortCategory("Salud"));
 
   const reduceNewO = [5, 6, 10, 20].reduce((acc, item) => {
@@ -38,6 +42,7 @@ export const ListItems = () => {
     const fetchData = async () => {
       const itemsDB = await getInfo();
       setItemsCataegory(itemsDB);
+      /* console.log("itemsDB", itemsDB) */
     };
     fetchData();
   }, []);
