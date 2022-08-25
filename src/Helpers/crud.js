@@ -7,7 +7,7 @@ export const getInfo = async () => {
   querySnapshot.forEach((doc) => {
     dataItems.push({ id: doc.id, ...doc.data() });
   });
-  console.log(dataItems)
+  
    return dataItems;
 };
 
