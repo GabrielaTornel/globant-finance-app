@@ -42,6 +42,7 @@ export const ModalDashboard = ({getDataCategories}) => {
 
   const handleChangeAmount = (e) => {
     setAmount(e.target.value);
+
   };
 
   return (
@@ -111,7 +112,7 @@ export const ModalDashboard = ({getDataCategories}) => {
                 <option defaultValue={"10"}>Octubre</option>
                 <option defaultValue={"11"}>Noviembre</option>
                 <option defaultValue={"12"}>Diciembre</option>
-              </select>
+              </select> 
             </div>
           </div>
         </Modal.Body>

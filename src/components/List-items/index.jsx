@@ -30,6 +30,7 @@ export const ListItems = () => {
   };
 
   React.useEffect(() => {
+
     fetchData();
   }, []);
   // const [priceItemsInitial, setPriceItemsInitial] = useState("0.00");

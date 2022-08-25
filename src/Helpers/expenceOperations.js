@@ -1,6 +1,7 @@
 import { getInfo } from "./crud";
 
 const categories = [
+
   "Familia",
   "Salud",
   "Transporte",
@@ -24,12 +25,14 @@ let expensesByCategory = {
 
 export const getTotalSumFromCategories = async () => {
   const expenses = await getInfo();
+
   let totalSumByCategory = categories.map((category) => {
     return {
       category,
       totalSum: 0,
     };
   });
+
   // group by category with Monto
   expenses.forEach(({ Category, Monto }) => {
     if (
@@ -41,7 +44,9 @@ export const getTotalSumFromCategories = async () => {
       try {
         expensesByCategory[Category].push(Monto);
       } catch (error) {
+
         console.log("error ->", Category);
+
       }
     }
   });
@@ -53,6 +58,8 @@ export const getTotalSumFromCategories = async () => {
         );
     }
   });
+
+
 
   return totalSumByCategory;
 };
