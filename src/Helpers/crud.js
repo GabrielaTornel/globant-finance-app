@@ -26,11 +26,11 @@ export const getInfoSortCategory = async (category) => {
   } catch (error) {}
 };
 
-export const sendExpense = async (amount, category) => {
-  const timestamp = Timestamp.fromDate(new Date())
+export const sendExpense = async (amount, category,mounth ) => {
+  // const timestamp = Timestamp.fromDate(new Date())
   await addDoc(collection(db, "Gastos"), {
-    Monto: amount || null,
+    Monto: Number(amount) || null,
     Category: category,
-    Fecha: timestamp,
+    Fecha: mounth,
   });
 };
