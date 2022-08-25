@@ -2,11 +2,22 @@ import React from "react";
 import { List } from "rsuite";
 import "./index.css";
 import IOsIcon from "@rsuite/icons/IOs";
-import { ModalDashboard } from "../Modal/index"
-
+import { ModalDashboard } from "../Modal/index";
+import { getInfo, getInfoSortCategory } from "../../Helpers/crud";
+import { ModalDescription } from "../Modal/modal-items";
 
 export const ListItems = () => {
+  const [itemsCataegory, setItemsCataegory] = React.useState([]);
+  // console.log(getInfoSortCategory("Salud"));
   
+  React.useEffect(() => {
+    const fetchData = async () => {
+      const itemsDB = await getInfo();
+      setItemsCataegory(itemsDB);
+    };
+    fetchData();
+    
+  }, []);
   const itemsList = [
     {
       id: 0,
@@ -53,14 +64,14 @@ export const ListItems = () => {
   ];
   // const [priceItemsInitial, setPriceItemsInitial] = useState("0.00");
 
-  
   return (
     <div className="list-container">
-      {itemsList.map((item, i) => (
+      {itemsCataegory.map((item, i) => (
         <List key={i}>
           <List.Item>
             {" "}
-            {item.image} {item.category} {item.price}{" "}
+            {item.Category} {item.Monto}
+            <ModalDescription id={ item.Category} />
           </List.Item>
         </List>
       ))}
