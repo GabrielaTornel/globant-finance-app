@@ -26,18 +26,12 @@ export const ModalDescription = (props) => {
   const handleClose = () => {
    setOpen(false);
   };
-
-  // const buttonEdit = async (e) => {
-  //   await )
-
-  //   (await getAnExpense(e.target.id));
-  // }
   const buttonEdit = async (id) => {
     try {
       const expenseRef = doc(db, "Gastos", id);
       const editExpenses = await updateDoc(expenseRef, {
         Monto: Number(editInput),
-      }); alert("agregado")
+      }); Swal.fire("Su Monto ha sido Actualizado", "", "success");
     } catch (error) {
       (error);
     }
