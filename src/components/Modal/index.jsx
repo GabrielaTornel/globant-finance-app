@@ -33,14 +33,13 @@ export const ModalDashboard = () => {
   const [amount, setAmount] = React.useState("");
 
   const handleConfirm = async () => {
-    const otra = 
-    await sendExpense(amount, category, mounth);
+    const otra = await sendExpense(amount, category, mounth);
     Swal.fire({
       icon: "success",
       title: "Enviado",
       text: "Registro enviado",
     });
-    ((amount === "" ) ?  alert("campo vacio") : otra);
+    amount === "" ? alert("campo vacio") : otra;
     handleClose();
   };
 
@@ -65,24 +64,23 @@ export const ModalDashboard = () => {
         onClose={handleClose}
       >
         <Modal.Header>
-          <Modal.Title>Agregar Gasto</Modal.Title>
+          <Modal.Title className="title-modal">Nuevo gasto</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <div className="content-modal">
             <div className="modal-content-amount">
-              <span>Ingresa nuevo egreso COP$ </span>
+              <span>Total COP$ </span>
               <input
                 title=""
                 type="text"
                 className="amount"
-                placeholder="Monto"
                 onChange={handleChangeAmount}
                 eventkey={amount}
               />
               .00
             </div>
             <div className="modal-content">
-              <span>Selecciona Categoria </span>
+              <span>Tipo de gasto </span>
               <select
                 className="category-container"
                 value={category}
@@ -121,11 +119,20 @@ export const ModalDashboard = () => {
           </div>
         </Modal.Body>
         <Modal.Footer>
-          <Button onClick={handleConfirm} color="violet" appearance="subtle">
-            Ok
+          <Button
+            onClick={handleConfirm}
+            className="button-modal"
+            color="violet"
+            appearance="subtle"
+          >
+            Guardar
           </Button>
-          <Button onClick={handleClose} color="red" appearance="primary">
-            Cancel
+          <Button
+            onClick={handleClose}
+            className="button-modal"
+            appearance="subtle"
+          >
+            Cancelar
           </Button>
         </Modal.Footer>
       </Modal>

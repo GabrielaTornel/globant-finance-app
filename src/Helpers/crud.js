@@ -2,20 +2,23 @@ import { collection, getDocs,addDoc , Timestamp, where, query } from "firebase/f
 import { db } from "../firebaseConfig/init";
 
 export const getInfo = async () => {
+  const email = localStorage.getItem("email");
   const querySnapshot = await getDocs(collection(db, "Gastos"));
   const dataItems = []
   querySnapshot.forEach((doc) => {
+    // console.table(doc.data())
     dataItems.push({ id: doc.id, ...doc.data() });
   });
   // console.log(dataItems)
-   return dataItems;
+   return dataItems.filter((item) =>item.user=== email);
 };
 
 
 export const getInfoSortCategory = async (category) => {
   try {
     const refDataQuery = collection(db, "Gastos");
-    const q = query(refDataQuery, where("Category", "==", category));
+    const q = query(refDataQuery, where("Category", "==", category),
+    );
     const querySnapshot = await getDocs(q);
     const docs = [];
     querySnapshot.forEach((doc) => {
@@ -32,6 +35,6 @@ export const sendExpense = async (amount, category,mounth ) => {
     Monto: Number(amount) || null,
     Category: category,
     Fecha: mounth,
-    User : localStorage.getItem("email")
+    user : localStorage.getItem("email")
   });
 };

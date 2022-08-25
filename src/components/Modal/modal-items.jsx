@@ -35,7 +35,7 @@ export const ModalDescription = (props) => {
       const expenseRef = doc(db, "Gastos", id);
       const editExpenses = await updateDoc(expenseRef, {
         Monto: Number(editInput),
-      });
+      }); alert("agregado")
     } catch (error) {
       console.log(error);
     }

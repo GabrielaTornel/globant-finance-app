@@ -8,7 +8,7 @@ import { ModalDescription } from "../Modal/modal-items";
 
 export const ListItems = () => {
   const [itemsCataegory, setItemsCataegory] = React.useState([]);
-  const [total, setTotal] = React.useState(0);
+ 
   // console.log(getInfoSortCategory("Salud"));
 
   // const reduceNewO = [5, 6, 10, 20].reduce((acc, item) => {
@@ -17,15 +17,19 @@ export const ListItems = () => {
   // console.log(reduceNewO, "aqui esta la suma");
 
   const accItemData = itemsCataegory.reduce((acc, cur) => {
-    const item =
-      acc.length > 0 && acc.find(({ Category }) => Category === cur.Category);
+    let item = null;
+    // if (acc.length > 0) {
+       item= acc.find(({ Category }) => Category === cur.Category);
+    // }
+      console.log(item, "este es el items")
     if (item) {
       item.Monto += cur.Monto;
+    
     } else acc.push({ Category: cur.Category, Monto: cur.Monto });
     return acc;
   }, []);
-  console.log(itemsCataegory); // not modified
-  console.log(accItemData);
+  // console.log(itemsCataegory); // not modified
+  // console.log(accItemData);
 
   React.useEffect(() => {
     const fetchData = async () => {
