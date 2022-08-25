@@ -1,7 +1,7 @@
-import {db} from './firebaseConfig';
-import {doc, updateDoc} from 'firebase/firestore';
+import {db} from '../init';
+import {doc, updateDoc,getDoc} from 'firebase/firestore';
 
-const editExpense = async({id, categoria, monto, fecha}) => {
+export const editExpense = async({id, categoria, monto, fecha}) => {
 	const documento = doc(db, 'Gastos', id);
 	return await updateDoc(documento, {
 		categoria: categoria,
@@ -9,5 +9,9 @@ const editExpense = async({id, categoria, monto, fecha}) => {
 		fecha: fecha
 	});
 }
+export const getAnExpense = async (id) => {
+	return await getDoc(doc(db, 'Gastos', id));
 
-export default editExpense;
+}
+
+
