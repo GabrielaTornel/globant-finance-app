@@ -36,6 +36,17 @@ export const ListItems = () => {
   // const [priceItemsInitial, setPriceItemsInitial] = useState("0.00");
   return (
     <div className="list-container">
+
+      {summed.map((item, i) => (
+        <List key={i}>
+          <List.Item>
+            {" "}
+            {item.Category} COP${item.Monto}
+            <ModalDescription id={item.Category} />
+          </List.Item>
+        </List>
+      ))}
+
       {itemsCataegory.length > 0 &&
         itemsCataegory.map((item, i) => (
           <List key={i}>
@@ -46,6 +57,7 @@ export const ListItems = () => {
             </List.Item>
           </List>
         ))}
+
       <section>
         <ModalDashboard getDataCategories={fetchData } />
       </section>

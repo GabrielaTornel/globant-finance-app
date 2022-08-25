@@ -28,11 +28,11 @@ export function Header() {
           Hola! {emailUser}</h5>
       </div>
         <button
-          className="BtnLogOut"
+          className="contanier-BtnLogOut"
           data-testid="btnLogOutGlobant"
           onClick={handleLogout}
         >
-          <img src= {Logout}></img>
+          <img src= {Logout} className="BtnLogOut"></img>
         </button>
       </div>
     </div>

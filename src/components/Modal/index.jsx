@@ -10,6 +10,7 @@ import {
 import "./index.css";
 import Swal from "sweetalert2";
 import { sendExpense } from "../../Helpers/crud";
+import Familia from "../../assets/icomoon/famila.png"
 
 export const ModalDashboard = ({getDataCategories}) => {
   const [open, setOpen] = React.useState(false);
@@ -49,7 +50,7 @@ export const ModalDashboard = ({getDataCategories}) => {
     <>
       <hr />
       <ButtonToolbar>
-        <Button color="violet" appearance="primary" onClick={handleOpen}>
+        <Button  className="Button-spend" color="grey" appearance="subtle" onClick={handleOpen}>
           Ingresar Gastos
         </Button>
       </ButtonToolbar>
@@ -83,13 +84,15 @@ export const ModalDashboard = ({getDataCategories}) => {
                 value={category}
                 onChange={categorySelect}
               >
-                <option>Entretenimiento</option>
-                <option>Servicios</option>
-                <option>Restaurantes</option>
-                <option>Compras</option>
-                <option>Salud</option>
-                <option>Regalos</option>
-                <option>Transportes</option>
+                <option defaultValue={"1"}>Familia</option>
+                <option defaultValue={"2"}>Salud</option>
+                <option defaultValue={"3"}>Transporte</option>
+                <option defaultValue={"4"}>Comestibles</option>
+                <option defaultValue={"5"}>Restaurantes</option>
+                <option defaultValue={"6"}>Ocio</option>
+                <option defaultValue={"7"}>Regalos</option>
+                <option defaultValue={"8"}>Compras</option>
+                
               </select>
               
             </div>
