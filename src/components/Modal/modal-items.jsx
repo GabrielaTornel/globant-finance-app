@@ -28,7 +28,7 @@ export const ModalDescription = (props) => {
   // const buttonEdit = async (e) => {
   //   await )
 
-  //   console.log(await getAnExpense(e.target.id));
+  //   (await getAnExpense(e.target.id));
   // }
   const buttonEdit = async (id) => {
     try {
@@ -37,7 +37,7 @@ export const ModalDescription = (props) => {
         Monto: Number(editInput),
       }); alert("agregado")
     } catch (error) {
-      console.log(error);
+      (error);
     }
   };
 

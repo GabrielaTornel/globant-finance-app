@@ -24,10 +24,27 @@ export const getInfoSortCategory = async (category) => {
     querySnapshot.forEach((doc) => {
       docs.push({ ...doc.data(), id: doc.id });
     });
-    console.log(docs)
+    (docs)
     return docs;
   } catch (error) {}
 };
+/* 
+export const getInfoByMonth = async (fecha) => {
+  try {
+    const refDataQuery = collection(db, "Gastos");
+    const q = query(refDataQuery, where("Fecha", "==", fecha),
+    );
+    const querySnapshot = await getDocs(q);
+    const docs = [];
+    querySnapshot.forEach((doc) => {
+      docs.push({ ...doc.data(), id: doc.id });
+    });
+    ("traer fecha", docs)
+    return docs;
+  } catch (error) {}
+}; */
+
+
 
 export const sendExpense = async (amount, category,mounth ) => {
   // const timestamp = Timestamp.fromDate(new Date())
@@ -37,4 +54,5 @@ export const sendExpense = async (amount, category,mounth ) => {
     Fecha: mounth,
     user : localStorage.getItem("email")
   });
+  ( amount, category,mounth, "parametros")
 };

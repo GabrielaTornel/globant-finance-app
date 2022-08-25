@@ -9,35 +9,35 @@ import { ModalDescription } from "../Modal/modal-items";
 export const ListItems = () => {
   const [itemsCataegory, setItemsCataegory] = React.useState([]);
 
-  /* console.log("itemsCataegory", itemsCataegory) */
+  /* ("itemsCataegory", itemsCataegory) */
  const [total, setTotal] = React.useState(0);
-  // console.log(getInfoSortCategory("Salud"));
+  // (getInfoSortCategory("Salud"));
 
   // const reduceNewO = [5, 6, 10, 20].reduce((acc, item) => {
   //   return (acc += item);
   // }, 0);
-  // console.log(reduceNewO, "aqui esta la suma");
+  // (reduceNewO, "aqui esta la suma");
 
   const accItemData = itemsCataegory.reduce((acc, cur) => {
     let item = null;
     // if (acc.length > 0) {
        item= acc.find(({ Category }) => Category === cur.Category);
     // }
-      console.log(item, "este es el items")
+      (item, "este es el items")
     if (item) {
       item.Monto += cur.Monto;
     
     } else acc.push({ Category: cur.Category, Monto: cur.Monto });
     return acc;
   }, []);
-  // console.log(itemsCataegory); // not modified
-  // console.log(accItemData);
+  // (itemsCataegory); // not modified
+  // (accItemData);
 
   React.useEffect(() => {
     const fetchData = async () => {
       const itemsDB = await getInfo();
       setItemsCataegory(itemsDB);
-      /* console.log("itemsDB", itemsDB) */
+      /* ("itemsDB", itemsDB) */
     };
     fetchData();
   }, []);

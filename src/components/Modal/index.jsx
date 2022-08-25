@@ -45,7 +45,7 @@ export const ModalDashboard = () => {
 
   const handleChangeAmount = (e) => {
     setAmount(e.target.value);
-    console.log(amount);
+    (amount);
   };
 
   return (
@@ -115,7 +115,7 @@ export const ModalDashboard = () => {
                 <option defaultValue={"10"}>Octubre</option>
                 <option defaultValue={"11"}>Noviembre</option>
                 <option defaultValue={"12"}>Diciembre</option>
-              </select>
+              </select> 
             </div>
           </div>
         </Modal.Body>
