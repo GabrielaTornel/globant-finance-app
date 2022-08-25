@@ -1,9 +1,6 @@
 import React from "react";
 import "rsuite/styles/index.less";
-import { Navbar } from "../../components/NavBar";
 import { ListItems } from "../../components/List-items";
-
-import './index.css'
 import { ItemsData } from "../../components/List-items/List-items";
 
 
@@ -12,7 +9,7 @@ function Dashboard() {
   return (
     
     <>
-      <header>  <Navbar /></header>
+      <header></header>
       
       <main className="dashboard-container"> 
        
