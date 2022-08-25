@@ -14,7 +14,7 @@ import traducciones from "../../../static/en/us.json"
 
 let language = "es"
 let login_title = language === "en" ? traducciones.login_title_en : traducciones.login_title_es;
-console.log(login_title, "holaaaaa");
+(login_title, "holaaaaa");
 
 const Login = () => {
   const navigate = useNavigate();

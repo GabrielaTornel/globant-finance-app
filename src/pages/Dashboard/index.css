@@ -3,3 +3,6 @@
   padding: 10%;
   grid-template-columns: 50% 40%;
 }
+.containerGraph{
+  width: 85%;
+}

@@ -56,8 +56,8 @@ export const loginWithGoogle = () => {
     const photoURLUser = user.photoURL;
     const emailVerifiedUser = user.emailVerified;
     const uid = user.uid;
-    console.log("usuario ingresado: ", emailUser);
-    console.log("usuario display: ", displayNameUser);
+    ("usuario ingresado: ", emailUser);
+    ("usuario display: ", displayNameUser);
   }
   return googlePopUp();
 };
