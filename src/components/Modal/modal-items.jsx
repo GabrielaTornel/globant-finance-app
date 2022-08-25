@@ -6,6 +6,8 @@ import { getInfoSortCategory } from "../../Helpers/crud";
 import "./index.css";
 import { doc, updateDoc } from "@firebase/firestore";
 import { db } from "../../firebaseConfig/init";
+import Swal from "sweetalert2";
+
 export const ModalDescription = (props) => {
   const [open, setOpen] = React.useState(false);
   const [category, setCategory] = React.useState("");
@@ -19,7 +21,9 @@ export const ModalDescription = (props) => {
     e.preventDefault();
     setEditInput(e.target.value);
   };
-  const handleClose = () => setOpen(false);
+  const handleClose = () => {
+   setOpen(false);
+  };
 
   // const buttonEdit = async (e) => {
   //   await )
@@ -28,12 +32,10 @@ export const ModalDescription = (props) => {
   // }
   const buttonEdit = async (id) => {
     try {
-       const expenseRef = doc(db, "Gastos", id);
-       const editExpenses = await updateDoc(expenseRef, {
-        Monto: editInput,
-       });
-      // (expenseRef.Monto !== editInput) && editExpenses();
-      // console.log(editInput, id, expenseRef.Monto === editInput);
+      const expenseRef = doc(db, "Gastos", id);
+      const editExpenses = await updateDoc(expenseRef, {
+        Monto: Number(editInput),
+      });
     } catch (error) {
       console.log(error);
     }
@@ -55,14 +57,14 @@ export const ModalDescription = (props) => {
           {category !== ""
             ? category.map((item, i) => (
                 <li className="listCategory" key={i}>
-                  {item.Category}
+                  {item.Category} {item.Fecha}
                   <input
                     className="input-itemsSort"
                     defaultValue={item.Monto}
                     onChange={handleInput}
-                  />
+                  /> 
                   .00{" "}
-                  <button id={item.id} onClick={()=> buttonEdit(item.id)}>
+                  <button id={item.id} onClick={() => buttonEdit(item.id)}>
                     ✏️
                   </button>
                 </li>
