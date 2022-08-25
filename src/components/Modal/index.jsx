@@ -63,35 +63,37 @@ export const ModalDashboard = () => {
         onClose={handleClose}
       >
         <Modal.Header>
-          <Modal.Title>Agregar Gasto</Modal.Title>
+          <Modal.Title className="title-modal">Nuevo gasto</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <div className="content-modal">
             <div className="modal-content-amount">
-              <span>Ingresa nuevo egreso COP$ </span>
+              <span>Total COP$ </span>
               <input
                 title=""
                 type="text"
                 className="amount"
-                placeholder="Monto"
                 onChange={handleChangeAmount}
                 eventkey={amount}
               />
               .00
             </div>
             <div className="modal-content">
-              <span>Selecciona Categoria </span>
+              <span>Tipo de gasto </span>
               <select
                 className="category-container"
                 value={category}
                 onChange={categorySelect}
               >
-                <option>Entretenimiento</option>
-                <option>Servicios</option>
-                <option>Restaurante</option>
-                <option>Compras</option>
+                <option>Familia</option>
                 <option>Salud</option>
+                <option>Transporte</option>
+                <option>Comestibles</option>
+                <option>Restaurantes</option>
+                <option>Ocio</option>
                 <option>Regalos</option>
+                <option>Compras</option>
+                
               </select>
             </div>
             <div className="modal-content">
@@ -114,15 +116,16 @@ export const ModalDashboard = () => {
                 <option defaultValue={"11"}>Noviembre</option>
                 <option defaultValue={"12"}>Diciembre</option>
               </select>
+
             </div>
           </div>
         </Modal.Body>
         <Modal.Footer>
-          <Button onClick={handleConfirm} color="violet" appearance="subtle">
-            Ok
+          <Button onClick={handleConfirm} className="button-modal" color="violet" appearance="subtle">
+             Guardar
           </Button>
-          <Button onClick={handleClose} color="red" appearance="primary">
-            Cancel
+          <Button onClick={handleClose} className="button-modal" appearance="subtle">
+            Cancelar
           </Button>
         </Modal.Footer>
       </Modal>
