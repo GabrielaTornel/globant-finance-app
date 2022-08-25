@@ -1,57 +1,31 @@
 import { getInfo } from "./crud";
 
 const categories = [
-  "Salud",
+
   "Familia",
-  "Transportes",
-  "Comestible",
+  "Salud",
+  "Transporte",
+  "Comestibles",
   "Restaurantes",
+  "Ocio",
   "Regalos",
   "Compras",
-  "Servicios",
-  "Entretenimiento",
-];
-const month = [
-  "Enero",
-  "Febrero",
-  "Marzo",
-  "Abril",
-  "Mayo",
-  "Junio",
-  "Julio",
-  "Agosto",
-  "Septiembre",
-  "Octubre",
-  "Noviembre",
-  "Diciembre",
 ];
 
 let expensesByCategory = {
-  Salud: [],
   Familia: [],
-  Transportes: [],
+  Salud: [],
+  Transporte: [],
   Comestibles: [],
   Restaurantes: [],
+  Ocio: [],
   Regalos: [],
   Compras: [],
-  Servicios: [],
-  Entretenimiento: [],
 };
 
-export const getTotalSumFromCategories = async (month = "NoFilter") => {
-    let expenses = [];
-  if (month !== "NoFilter") {
-    const data = await getInfo();
-    expenses = data.filter((expense) => {
-        console.log(expense, expense.fecha == month)
-        return expense.Fecha === month
-    });
-  } else {
-    expenses = await getInfo()
-  }
-  console.table(expenses);
-  console.log(month, "Entrando de la función")
- 
+export const getTotalSumFromCategories = async () => {
+  const expenses = await getInfo();
+
   let totalSumByCategory = categories.map((category) => {
     return {
       category,
@@ -70,7 +44,9 @@ export const getTotalSumFromCategories = async (month = "NoFilter") => {
       try {
         expensesByCategory[Category].push(Monto);
       } catch (error) {
-        ("error ->", Category);
+
+        console.log("error ->", Category);
+
       }
     }
   });
@@ -82,6 +58,8 @@ export const getTotalSumFromCategories = async (month = "NoFilter") => {
         );
     }
   });
-  console.log(totalSumByCategory, month, "saliendo de la función")
+
+
+
   return totalSumByCategory;
 };

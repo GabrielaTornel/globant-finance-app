@@ -3,9 +3,8 @@ import "./index.css";
 import { ListItems } from "../../components/List-items";
 import { Graph } from "../../components/Graph";
 
-
 function Dashboard() {
-  (localStorage);
+  localStorage;
   return (
     <>
       <header>{/* <Navbar /> */}</header>
