@@ -5,9 +5,11 @@ import { ListItems } from "../../components/List-items";
 
 import './index.css'
 import { ItemsData } from "../../components/List-items/List-items";
+import expenseOfMonthCategories from "../../hooks/expenseOfMonth"
 
 
 function Dashboard() {
+  expenseOfMonthCategories();
   console.log(localStorage)
   return (
     
@@ -22,6 +24,9 @@ function Dashboard() {
         <section > 
           <ListItems />
           <ItemsData />
+        </section>
+        <section>
+   
         </section>
       
       </main>
