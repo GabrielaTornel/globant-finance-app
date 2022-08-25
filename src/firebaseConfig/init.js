@@ -8,25 +8,40 @@ import {
   GoogleAuthProvider,
   signInWithPopup,
 } from "firebase/auth";
-import { getFirestore, collection, addDoc } from "firebase/firestore";
+
+import { getFirestore, collection, getDocs} from "firebase/firestore";
 
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyDxIN4NedZ88P53EVaFsaEbaDWPz_-dLsk",
-  authDomain: "globant-financetf.firebaseapp.com",
-  projectId: "globant-financetf",
-  storageBucket: "globant-financetf.appspot.com",
-  messagingSenderId: "715354408208",
-  appId: "1:715354408208:web:ab5b45452b7cadfbb75195",
+  
+  apiKey: import.meta.env.VITE_API_KEY,
+  authDomain: import.meta.env.VITE_AUTH_DOMAIN,
+  databaseURL: import.meta.env.VITE_DATABASE_URL,
+  projectId: import.meta.env.VITE_PROJECT_ID,
+  storageBucket: import.meta.env.VITE_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.VITE_MESSAGING_SENDER_ID,
+  appId: import.meta.env.VITE_APP_ID
 };
 
 // Initialize Firebase
 export const app = initializeApp(firebaseConfig);
 
 export const auth = getAuth(app);
+export const db = getFirestore(app);
+
+export const useAuth = () => {
+  return {
+    user: { email: localStorage.getItem("email") },
+    logOut: () => {
+      signOut(auth);
+      localStorage.removeItem("email");
+    },
+    loading: false,
+  };
+};
 
 export const provider = new GoogleAuthProvider();
 export const googlePopUp = () => signInWithPopup(auth, provider);
@@ -47,11 +62,16 @@ export const loginWithGoogle = () => {
   return googlePopUp();
 };
 
+
 export const signUp = (email, password) =>
   createUserWithEmailAndPassword(auth, email, password);
 
 export const loginWithEmailAndPassword = (email, password) =>
   signInWithEmailAndPassword(auth, email, password);
+
+
+
+  
 
 export {
   createUserWithEmailAndPassword,
@@ -60,3 +80,4 @@ export {
   GoogleAuthProvider,
   signInWithPopup,
 };
+  

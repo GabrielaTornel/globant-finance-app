@@ -1,0 +1,42 @@
+.imgLogo {
+  width: 180px;
+  margin-top: 30px;
+  margin-bottom: 20px;
+}
+
+h3 {
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+  font-size: 25px !important;
+}
+
+.formContainer {
+  border-radius: 18px;
+  padding: 60px;
+  margin: 10px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.ContainerLogin {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.ContainerButton , .containerGoogle {
+  display: flex;
+  flex-direction: column;
+}
+
+.ButtonLogin {
+  margin-top: 5px;
+}
+
+.iconGoogle{
+    margin-right: 6px;
+    color: #5f5dec9a;
+}

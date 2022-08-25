@@ -1,27 +1,105 @@
-import { Button } from "rsuite";
 import "rsuite/styles/index.less";
 import { Link } from "react-router-dom";
-import { Form, Schema } from "rsuite";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { loginWithGoogle } from "../../../firebaseConfig/init.js";
-import GooglePlusCircleIcon from "@rsuite/icons/legacy/GooglePlusCircle";
+import { loginWithEmailAndPassword } from "../../../firebaseConfig/init";
+import Swal from "sweetalert2";
+import Button from "react-bootstrap/Button";
+import Form from "react-bootstrap/Form";
+import logo from "../../../assets/icomoon/logo1.png";
+import iconGoogle from "../../../assets/icomoon/googleIcon.png"
+import styles from "../Login/login.module.css";
+import traducciones from "../../../static/en/us.json"
 
-function Login() {
-  const model = Schema.Model({
-    email: Schema.Types.StringType().isEmail(
-      "Please enter a valid email address."
-    ),
-    password: Schema.Types.StringType().isRequired("This field is required."),
-  });
-  const TextField = ({ name, label, accepter, ...rest }) => (
-    <Form.Group controlId={name}>
-      <Form.ControlLabel>{label} </Form.ControlLabel>
-      <Form.Control name={name} accepter={accepter} {...rest} />
-    </Form.Group>
-  );
+let language = "es"
+let login_title = language === "en" ? traducciones.login_title_en : traducciones.login_title_es;
+console.log(login_title, "holaaaaa");
 
+const Login = () => {
   const navigate = useNavigate();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const handleChange = (e) => {
+    if (e.target.name === "email") {
+      setEmail(e.target.value);
+    } else if (e.target.name === "password") {
+      setPassword(e.target.value);
+    }
+  };
+
+  //Validación de formulario
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    const validEmail = /[\w\d\.-]+@[\w\d\.-]+\.[\w\d\.-]+/g;
+    if (!validEmail.test(email)) {
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Ingrese un correo electrónico válido",
+      });
+      return;
+    }
+
+    if (email === "" || password === "") {
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Debe llenar todos los campos",
+      });
+      return;
+    }
+
+    //¿hace falta una condicional para login con google?
+
+    try {
+      await loginWithEmailAndPassword(email, password);
+      let localEmail =  localStorage.setItem("email", email);
+      const Toast = Swal.mixin({
+        toast: true,
+        position: "top-end",
+        showConfirmButton: false,
+        timer: 3000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+          toast.addEventListener("mouseenter", Swal.stopTimer);
+          toast.addEventListener("mouseleave", Swal.resumeTimer);
+        },
+      });
+
+      Toast.fire({
+        icon: "success",
+        title: "Ha iniciado sesión con éxito",
+      });
+
+      navigate("/dashboard");
+    } catch (error) {
+      switch (error.code) {
+        case "auth/wrong-password":
+          Swal.fire({
+            icon: "error",
+            title: "La contraseña no es correcta.",
+          });
+          break;
+        case "auth/user-not-found":
+          Swal.fire({
+            icon: "error",
+            title: "Por favor, regístrate",
+            text: "No se encontro ninguna cuenta con este correo electrónico.",
+          });
+          navigate("/register");
+          break;
+        default:
+          Swal.fire({
+            icon: "error",
+            title: "Hubo un error al intentar crear la cuenta.",
+          });
+          break;
+      }
+    }
+  };
 
   const signInWithGoogle = () => {
     loginWithGoogle()
@@ -34,46 +112,79 @@ function Login() {
         navigate("/dashboard");
       })
       .catch((error) => {
-        navigate("/*");
+        navigate("/");
       });
   };
+
   return (
-    <div className="Conatainer-login">
-      <h3>Inicia sesión</h3>
-      <Form model={model} /*  onSubmit={handleSubmit} */>
-        <TextField
-          name="email"
-          type="email"
-          placeholder="Correo electrónico"
-          // onChange={(e) => setEmail(e.target.value)}
-        />
-        <TextField
-          name="password"
-          label="Password"
-          type="password"
-          autoComplete="off"
-          placeholder="Contraseña"
-        />
+    <div className={styles.ContainerLogin}>
+      <img src={logo} className={styles.imgLogo} />
+      <div className={styles.formContainer}>
+        <div>
+          <Form onSubmit={handleSubmit}>
+            <h3> {login_title} </h3>
+            <Form.Group className="mb-3" controlId="formBasicEmail">
+              <Form.Control
+                name="email"
+                type="email"
+                placeholder="Correo electrónico"
+                onChange={handleChange}
+              />
+            </Form.Group>
 
-        <Button appearance="primary" color="violet" type="submit">
-          Iniciar sesión
-        </Button>
-        <Button
-          color="red"
-          appearance="primary"
-          type="submit"
-          onClick={signInWithGoogle}
-        >
-          <GooglePlusCircleIcon /> Google
-        </Button>
-        <br></br>
-
-        <Link to="/register" className="Link-register">
-          ¿ No tienes cuenta? Regístrate
-        </Link>
-      </Form>
+            <Form.Group className="mb-3" controlId="formBasicPassword">
+              <Form.Control
+                name="password"
+                label="Password"
+                type="password"
+                autoComplete="off"
+                placeholder="Contraseña"
+                onChange={handleChange}
+              />
+            </Form.Group>
+            <div className={styles.ContainerButton}>
+              <style type="text/css">
+                {`
+                  .btn-purple {
+                  background-color: #605DEC;
+                  color: white;
+                  }
+                `}
+              </style>
+              <Button
+                variant="purple"
+                type="submit"
+                className="mb-3 buttonColor"
+              >
+                Iniciar Sesion
+              </Button>
+            </div>
+          </Form>
+          <style type="text/css">
+            {`
+              .btn-purpleT {
+              background-color: #5f5dec9a;
+              color: white;
+              }
+            `}
+          </style>
+          <div className={styles.containerGoogle}>
+            <Button
+              variant="purpleT"
+              type="submit"
+              className="mb-3 btnGoogle"
+              onClick={signInWithGoogle}
+            ><img src={iconGoogle} className={styles.iconGoogle} alt="logo Google"/>
+                Inicia con Google
+            </Button>
+            <Link to="/register" className="Link-register">
+              ¿No tienes cuenta? Regístrate
+            </Link>
+          </div>
+        </div>
+      </div>
     </div>
   );
-}
+};
 
 export default Login;
