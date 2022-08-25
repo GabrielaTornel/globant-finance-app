@@ -2,8 +2,10 @@ import React, { useEffect, useState } from "react";
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 import { Doughnut } from "react-chartjs-2";
 import { getTotalSumFromCategories } from "../../Helpers/expenceOperations";
+import { Form } from "react-bootstrap";
 
 ChartJS.register(ArcElement, Tooltip, Legend);
+
 
 const graphStyles = {
   backgroundColor: [
@@ -28,33 +30,67 @@ const graphStyles = {
 export const Graph = () => {
   const [graphConfig, setGraphConfig] = useState({});
   const [isConfigReady, setIsConfigReady] = useState(false);
+  const [selectValue, setSelectValue] = useState("NoFilter")
+
+  const onSelectionChanged = (event) => {
+    setSelectValue(event.target.value);
+  };
 
   useEffect(() => {
     const setup = async () => {
-      const totalExpensesData = await getTotalSumFromCategories();
+
+      const totalExpensesData = await getTotalSumFromCategories(selectValue);
       const labels = [];
       const data = [];
+   /*    debugger */
+      console.log( "estoy en el efecto", totalExpensesData, selectValue)
       Object.entries(totalExpensesData).forEach(([index, expense]) => {
         const { totalSum, category } = expense;
         labels.push(category);
         data.push(totalSum);
       });
-      console.log(labels, data);
+
       setGraphConfig({
         labels,
         datasets: [
           {
             label: "Categorias",
             data,
-            ...graphStyles
+            ...graphStyles,
           },
         ],
       });
       setIsConfigReady(true);
     };
     setup();
-  }, []);
-  return <>{isConfigReady && <Doughnut data={graphConfig} />}</>;
+  }, [selectValue]);
+
+
+  return (
+    <>
+     
+
+      <Form.Select
+        aria-label="Default select example"
+        onChange={onSelectionChanged}
+      >
+        <option>Seleccione un mes</option>
+        <option value={"Enero"}>Enero</option>
+        <option defaultValue={"Febrero"}>Febrero</option>
+        <option defaultValue={"Marzo"}>Marzo</option>
+        <option defaultValue={"Abril"}>Abril</option>
+        <option defaultValue={"Mayo"}>Mayo</option>
+        <option defaultValue={"Junio"}>Junio</option>
+        <option defaultValue={"Julio"}>Julio</option>
+        <option defaultValue={"Agosto"}>Agosto</option>
+        <option defaultValue={"Septiembre"}>Septiembre</option>
+        <option defaultValue={"Octubre"}>Octubre</option>
+        <option defaultValue={"Noviembre"}>Noviembre</option>
+        <option defaultValue={"Diciembre"}>Diciembre</option>
+      </Form.Select>
+      {isConfigReady && <Doughnut data={graphConfig} />}
+    </>
+  );
 };
 
 export default Graph;

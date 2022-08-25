@@ -16,7 +16,7 @@ const Register = () => {
   const navigate = useNavigate();
 
   const handleChange = (event) => {
-    console.log(event.target.name);
+    (event.target.name);
     switch (event.target.name) {
       case "email":
         setEmail(event.target.value);
