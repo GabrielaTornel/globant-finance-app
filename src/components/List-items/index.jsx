@@ -8,12 +8,14 @@ import { ModalDescription } from "../Modal/modal-items";
 
 export const ListItems = () => {
   const [itemsCataegory, setItemsCataegory] = React.useState([]);
+  /* console.log("itemsCataegory", itemsCataegory) */
   // console.log(getInfoSortCategory("Salud"));
   
   React.useEffect(() => {
     const fetchData = async () => {
       const itemsDB = await getInfo();
       setItemsCataegory(itemsDB);
+      /* console.log("itemsDB", itemsDB) */
     };
     fetchData();
     

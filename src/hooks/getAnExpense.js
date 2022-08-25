@@ -3,7 +3,6 @@ import {db} from './../firebaseConfig/init';
 import {useNavigate} from 'react-router-dom';
 import { doc, getDoc } from '@firebase/firestore';
 
-
 const useGetAnExpense = (id) => {
 	const navigate = useNavigate();
 	const [expense, setExpense] = useState([]);
@@ -25,3 +24,4 @@ useEffect(() => {
 }
 
 	export default useGetAnExpense;
+ 

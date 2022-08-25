@@ -2,26 +2,26 @@ import React from "react";
 import "rsuite/styles/index.less";
 import { Navbar } from "../../components/NavBar";
 import { ListItems } from "../../components/List-items";
-import expenseOfMonthCategories from "../../hooks/expenseOfMonth"
+import { Filter } from "../../components/Filter/Filter";
 
 
 function Dashboard() {
-  expenseOfMonthCategories();
   console.log(localStorage)
-
-
   return (
+    
     <>
-      <header>
-        {" "}
-        <Navbar />
-      </header>
+      <header>  <Navbar /></header>
+      
+      <main className="dashboard-container"> 
 
-      <main className="dashboard-container">
+      <section>
+        <Filter/>
+      </section>
+       
         <section>
           <h1>Dashboard</h1>
         </section>
-        <section>
+        <section > 
           <ListItems />
         </section>
       
@@ -29,6 +29,7 @@ function Dashboard() {
       <> </>
     </>
   );
+
 }
 
 export default Dashboard;
