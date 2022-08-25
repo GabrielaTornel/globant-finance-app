@@ -1,11 +1,12 @@
 import { getInfo } from "./crud"
 
 
-const categories = ['Salud', 'Transportes', 'Comestible', 'Restaurantes',  'Regalos', 'Compras', 'Servicios', 'Entretenimiento'];
+const categories = ['Salud','Familia', 'Transportes', 'Comestible', 'Restaurantes',  'Regalos', 'Compras', 'Servicios', 'Entretenimiento'];
 
 let expensesByCategory = {
     
     Salud: [],
+    Familia: [],
     Transportes: [],
     Comestibles: [],
     Restaurantes: [],
