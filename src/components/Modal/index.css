@@ -1,6 +1,12 @@
 .modalContainer {
   background-color: #605dec;
 }
+.input-itemsSort{
+  background-color: none;
+}
+.listCategory{
+  width: 100%;
+}
 .amount {
   position: relative;
   padding: 15px 0 0;
@@ -52,4 +58,11 @@
   background-color: #605DEC;
   border-radius: 5px;
   padding: 10px;
+}
+.title-modal{
+  text-align: center;
+}
+.button-modal{
+  background-color: #605DEC;
+  color: white;
 }
