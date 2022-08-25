@@ -94,6 +94,7 @@ export const ModalDashboard = () => {
                 <option>Regalos</option>
                 <option>Transportes</option>
               </select>
+              
             </div>
             <div className="modal-content">
               <span>Mes</span>

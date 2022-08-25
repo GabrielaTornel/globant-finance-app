@@ -9,8 +9,8 @@ export const getInfo = async () => {
     // console.table(doc.data())
     dataItems.push({ id: doc.id, ...doc.data() });
   });
-  // console.log(dataItems)
    return dataItems.filter((item) =>item.user=== email);
+
 };
 
 

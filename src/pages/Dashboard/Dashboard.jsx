@@ -1,19 +1,19 @@
-import React from "react";
 import "rsuite/styles/index.less";
-import { ListItems } from "../../components/List-items";
-
 import "./index.css";
-
+import { ListItems } from "../../components/List-items";
+import { Graph } from "../../components/Graph";
+import { Filter } from "../../components/Filter/Filter";
 
 function Dashboard() {
   console.log(localStorage);
   return (
     <>
-
-      <header></header>
-      
-      <main className="dashboard-container"> 
-       
+      <header>{/* <Navbar /> */}</header>
+      <main className="dashboard-container">
+        <section className="containerGraph">
+          <Graph />
+          <Filter />
+        </section>
 
         <section>
           <h1>Dashboard</h1>
