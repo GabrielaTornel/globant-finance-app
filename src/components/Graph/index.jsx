@@ -74,7 +74,7 @@ export const Graph = () => {
         aria-label="Default select example"
         onChange={onSelectionChanged}
       >
-        <option>Open this select menu</option>
+        <option>Seleccione un mes</option>
         <option value={"Enero"}>Enero</option>
         <option defaultValue={"Febrero"}>Febrero</option>
         <option defaultValue={"Marzo"}>Marzo</option>

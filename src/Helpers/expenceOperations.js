@@ -39,16 +39,19 @@ let expensesByCategory = {
 };
 
 export const getTotalSumFromCategories = async (month = "NoFilter") => {
-    console.log(month, "mes")
-  let expenses = [];
+    let expenses = [];
   if (month !== "NoFilter") {
     const data = await getInfo();
-    expenses = data.filter((expense) => expense.Fecha === month);
+    expenses = data.filter((expense) => {
+        console.log(expense, expense.fecha == month)
+        return expense.Fecha === month
+    });
   } else {
     expenses = await getInfo()
   }
- 
   console.table(expenses);
+  console.log(month, "Entrando de la función")
+ 
   let totalSumByCategory = categories.map((category) => {
     return {
       category,
@@ -79,6 +82,6 @@ export const getTotalSumFromCategories = async (month = "NoFilter") => {
         );
     }
   });
-
+  console.log(totalSumByCategory, month, "saliendo de la función")
   return totalSumByCategory;
 };
