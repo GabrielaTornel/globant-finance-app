@@ -40,7 +40,7 @@ export const ListItems = () => {
           <List key={i}>
             <List.Item>
               <img src={`./icomoon/${item.Category}.png`} /> {item.Category}{" "}
-              Monto COP${item.Monto}
+               COP${item.Monto}
               <ModalDescription id={item.Category} />
             </List.Item>
           </List>

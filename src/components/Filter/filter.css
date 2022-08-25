@@ -1,5 +1,15 @@
-.box-filter{
+.box-filter {
     border-color: red;
-    flex-direction:inherit
+    display: inline-flex;
+    margin: 5;
+    margin: 5%;
+    /* padding: 5px; */
+}
 
+.container_filter {
+    margin-bottom: 10%;
+  
+}
+.mb-2{
+    margin: 5%;
 }

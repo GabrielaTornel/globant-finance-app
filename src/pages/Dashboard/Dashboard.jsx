@@ -11,12 +11,8 @@ function Dashboard() {
       <header>{/* <Navbar /> */}</header>
       <main className="dashboard-container">
         <section className="containerGraph">
-          <Graph />
           <Filter />
-        </section>
-
-        <section>
-          <h1>Dashboard</h1>
+          <Graph />
         </section>
         <section>
           <ListItems />
