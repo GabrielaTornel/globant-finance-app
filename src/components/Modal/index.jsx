@@ -21,15 +21,19 @@ export const ModalDashboard = () => {
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
   const [category, setCategory] = React.useState("");
+  const [mounth, setMounth] = React.useState("");
 
   const categorySelect = (e) => {
     setCategory(e.target.value);
+  };
+  const mounthSelect = (e) => {
+    setMounth(e.target.value);
   };
 
   const [amount, setAmount] = React.useState("");
 
   const handleConfirm = async () => {
-   await sendExpense(amount, category)
+    await sendExpense(amount, category, mounth);
     Swal.fire({
       icon: "success",
       title: "Enviado",
@@ -42,6 +46,7 @@ export const ModalDashboard = () => {
     setAmount(e.target.value);
     console.log(amount);
   };
+
   return (
     <>
       <hr />
@@ -92,35 +97,32 @@ export const ModalDashboard = () => {
               </select>
             </div>
             <div className="modal-content">
-              <span>Selecciona mes </span>
+              <span>Mes</span>
               <select
                 className="category-container"
-                value={category}
-                onChange={categorySelect}
-                >
-                 <option>Enero</option>
-                 <option>Febrero</option>
-                 <option>Marzo</option>
-                 <option>Abril</option>
-                 <option>Mayo</option>
-                 <option>Junio</option>
-                 <option>Julio</option>
-                 <option>Agosto</option>
-                 <option>Septiembre</option>
-                 <option>Octubre</option>
-                 <option>Noviembre</option>
-                 <option>Diciembre</option> 
-                 </select>
+                value={mounth}
+                onChange={mounthSelect}
+              >
+                <option defaultValue={"1"}>Enero</option>
+                <option defaultValue={"2"}>Febrero</option>
+                <option defaultValue={"3"}>Marzo</option>
+                <option defaultValue={"4"}>Abril</option>
+                <option defaultValue={"5"}>Mayo</option>
+                <option defaultValue={"6"}>Junio</option>
+                <option defaultValue={"7"}>Julio</option>
+                <option defaultValue={"8"}>Agosto</option>
+                <option defaultValue={"9"}>Septiembre</option>
+                <option defaultValue={"10"}>Octubre</option>
+                <option defaultValue={"11"}>Noviembre</option>
+                <option defaultValue={"12"}>Diciembre</option>
+              </select>
+
             </div>
           </div>
         </Modal.Body>
         <Modal.Footer>
-          <Button
-            onClick={handleConfirm}
-            className="button-modal"
-            appearance="subtle"
-          >
-            Guardar
+          <Button onClick={handleConfirm} className="button-modal" color="violet" appearance="subtle">
+             Guardar
           </Button>
           <Button onClick={handleClose} className="button-modal" appearance="subtle">
             Cancelar
