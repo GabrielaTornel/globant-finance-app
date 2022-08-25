@@ -1,4 +1,4 @@
-import { collection, getDocs } from "firebase/firestore";
+import { collection, getDocs,addDoc , Timestamp } from "firebase/firestore";
 import { db } from "../firebaseConfig/init";
 
 export const getInfo = async () => {
@@ -9,4 +9,15 @@ export const getInfo = async () => {
   });
   console.log(dataItems)
    return dataItems;
+};
+
+
+
+export const sendExpense = async (amount, category) => {
+  const timestamp = Timestamp.fromDate(new Date())
+  await addDoc(collection(db, "Gastos"), {
+    Monto: amount || null,
+    Category: category,
+    Fecha: timestamp,
+  });
 };

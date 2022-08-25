@@ -13,6 +13,7 @@ import "./index.css";
 import { addDoc, collection, Timestamp } from "firebase/firestore";
 import { db } from "../../firebaseConfig/init";
 import Swal from "sweetalert2";
+import { sendExpense } from "../../Helpers/crud";
 
 export const ModalDashboard = () => {
   const [open, setOpen] = React.useState(false);
@@ -26,20 +27,17 @@ export const ModalDashboard = () => {
   };
 
   const [amount, setAmount] = React.useState("");
-  
-  const handleSendGasto = async () => {
-    await addDoc(collection(db, "Gastos"), {
-      Monto: amount || null,
-      Category: category,
-      Fecha: Timestamp.fromDate(new Date()),
-    });
+
+  const handleConfirm = async () => {
+   await sendExpense(amount, category)
     Swal.fire({
       icon: "success",
       title: "Enviado",
       text: "Registro enviado",
     });
-    handleClose()
+    handleClose();
   };
+
   const handleChangeAmount = (e) => {
     setAmount(e.target.value);
     console.log(amount);
@@ -48,7 +46,9 @@ export const ModalDashboard = () => {
     <>
       <hr />
       <ButtonToolbar>
-        <Button color="violet" appearance="primary"onClick={handleOpen}>Ingresar Gastos</Button>
+        <Button color="violet" appearance="primary" onClick={handleOpen}>
+          Ingresar Gastos
+        </Button>
       </ButtonToolbar>
 
       <Modal
@@ -62,20 +62,25 @@ export const ModalDashboard = () => {
         </Modal.Header>
         <Modal.Body>
           <div className="content-modal">
-          <div className="modal-content-amount">
-            <span>Ingresa nuevo egreso COP$  </span>
-            <input
-            title=""
-            type="text"
-            className="amount"
-            placeholder="Monto"
-            onChange={handleChangeAmount}
-            eventkey={amount}
-          />.00
+            <div className="modal-content-amount">
+              <span>Ingresa nuevo egreso COP$ </span>
+              <input
+                title=""
+                type="text"
+                className="amount"
+                placeholder="Monto"
+                onChange={handleChangeAmount}
+                eventkey={amount}
+              />
+              .00
             </div>
-          <div className="modal-content">
-          <span>Selecciona Categoria </span>
-              <select className="category-container"value={category} onChange={categorySelect}>
+            <div className="modal-content">
+              <span>Selecciona Categoria </span>
+              <select
+                className="category-container"
+                value={category}
+                onChange={categorySelect}
+              >
                 <option>Entretenimiento</option>
                 <option>Servicios</option>
                 <option>Restaurante</option>
@@ -83,15 +88,19 @@ export const ModalDashboard = () => {
                 <option>Salud</option>
                 <option>Regalos</option>
               </select>
-            
-          </div>
-          <div className="modal-content">
-          <span>Selecciona fecha </span><DatePicker format="yyyy-MM" />
-          </div>
+            </div>
+            <div className="modal-content">
+              <span>Selecciona fecha </span>
+              <DatePicker format="yyyy-MM" />
+            </div>
           </div>
         </Modal.Body>
         <Modal.Footer>
-          <Button onClick={handleSendGasto} color="violet" appearance="subtle">
+          <Button
+            onClick={handleConfirm}
+            color="violet"
+            appearance="subtle"
+          >
             Ok
           </Button>
           <Button onClick={handleClose} color="red" appearance="primary">

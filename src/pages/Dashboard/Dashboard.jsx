@@ -10,6 +10,7 @@ import { ItemsData } from "../../components/List-items/List-items";
 function Dashboard() {
   console.log(localStorage)
   return (
+    
     <>
       <header>  <Navbar /></header>
       
@@ -27,6 +28,7 @@ function Dashboard() {
       <> </>
     </>
   );
+
 }
 
 export default Dashboard;
