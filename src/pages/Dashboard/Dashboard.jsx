@@ -15,9 +15,7 @@ function Dashboard() {
 
         </section>
 
-        <section>
-          <h1>Dashboard</h1>
-        </section>
+
         <section>
           <ListItems />
         </section>
