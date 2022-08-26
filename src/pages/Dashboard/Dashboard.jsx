@@ -10,13 +10,11 @@ function Dashboard() {
     <>
       <header>{/* <Navbar /> */}</header>
       <main className="dashboard-container">
+        
         <section className="containerGraph">
           <Graph />
-
         </section>
-
-
-        <section>
+        <section className="containerGraph">
           <ListItems />
         </section>
       </main>

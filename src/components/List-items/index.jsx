@@ -40,8 +40,7 @@ export const ListItems = () => {
         itemsCataegory.map((item, i) => (
           <List key={i}>
             <List.Item>
-              <img src={`./icomoon/${item.Category}.png`} /> {item.Category}{" "}
-              Monto COP${item.Monto}
+              <img src={`./icomoon/${item.Category}.png`} /> {item.Category}{" "}COP$ {item.Monto}
               <ModalDescription id={item.Category} />
             </List.Item>
           </List>

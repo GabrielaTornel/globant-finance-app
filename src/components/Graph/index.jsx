@@ -3,6 +3,7 @@ import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 import { Doughnut } from "react-chartjs-2";
 import { getTotalSumFromCategories } from "../../Helpers/expenceOperations";
 import { Form } from "react-bootstrap";
+import "./graph.css"
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
@@ -75,9 +76,9 @@ export const Graph = () => {
 
   return (
     <>
-      {isConfigReady && <Doughnut data={graphConfig} />}
+     <h1 className="title_amount">Mis gastos</h1>
 
-      <Form.Select
+      <Form.Select className="form-filter"
         aria-label="Default select example"
         onChange={onSelectionChanged}
       >
@@ -95,6 +96,7 @@ export const Graph = () => {
         <option defaultValue={"Noviembre"}>Noviembre</option>
         <option defaultValue={"Diciembre"}>Diciembre</option>
       </Form.Select>
+      {isConfigReady && <Doughnut data={graphConfig} />}
     </>
   );
 };
